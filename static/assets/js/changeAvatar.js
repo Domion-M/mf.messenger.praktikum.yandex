@@ -15,13 +15,13 @@ function changeAvatarUser(e) {
     const form = document.forms;
     for (let item of form[0]) {
         const val = item.value
-        console.log(val);
         if (val.trim() != '') {
             const title = item.parentNode.previousElementSibling
             title.textContent = 'Файл загружен'
             const nameFile = val.slice(12)
             label.textContent = nameFile
             const avatar = new Avatar(val)
+            console.log(avatar);
         }
     }
 }
