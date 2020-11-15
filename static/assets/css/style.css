@@ -344,8 +344,8 @@ button {
 .menuListAction:hover {
   background: #eaf0fa;
 }
-.menuListAction:last-child {
-  margin-top: 10px;
+.menuListAction {
+  margin: 5px 0;
 }
 .menuListAction > div {
   width: 22px;
@@ -373,6 +373,13 @@ button {
 }
 .menuListAction > .menuListAction__delete::after {
   transform: rotate(45deg);
+}
+.menuListAction__delete.delete {
+  border-color: #ff0000;
+}
+.menuListAction__delete.delete::before,
+.menuListAction > .menuListAction__delete.delete::after {
+  background: #ff0000;
 }
 /* message >bodychat */
 .windowChat__message__bodyChat {
