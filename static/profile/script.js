@@ -1,10 +1,5 @@
 const save = document.querySelector('.saveData')
-class Password {
-    constructor(oldPassword, newPassword) {
-        this.oldPassword = oldPassword
-        this.newPassword = newPassword
-    }
-}
+
 class UserData {
     constructor(mail, login, first_name, second_name, display_name, phone) {
         this.mail = mail
@@ -24,13 +19,8 @@ function saveNewPassword(e) {
         valInput.push(input.value)
         console.log(input.value);
     }
-    if (e.target.id === 'userPassword') {
-        const newPassword = new Password(...valInput)
-        console.log(newPassword);
-    } else if (e.target.id === 'userData') {
-        const newPassword = new UserData(...valInput)
-        console.log(newPassword);
-    }
+    const newPassword = new UserData(...valInput)
+    console.log(newPassword);
 
 }
 

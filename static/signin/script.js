@@ -1,16 +1,12 @@
 const inputFocusBlur = document.querySelectorAll('.loginAndSigninForm__entry input')
 const logUserDate = document.querySelector('.logArray')
 
-class UserAuth {
-    constructor(login, password) {
+
+
+class UserSignin {
+    constructor(email, login, first_name, second_name, phone, password, passwordCheck) {
         this.login = login
         this.password = password
-    }
-}
-
-class UserSignin extends UserAuth {
-    constructor(email, login, first_name, second_name, phone, password, passwordCheck) {
-        super(login, password)
         this.email = email
         this.first_name = first_name
         this.second_name = second_name
@@ -34,13 +30,8 @@ function logDateUser(e) {
     for (let item of inputFocusBlur) {
         userDate.push(item.value)
     }
-    if (e.target.id === 'loginBtn') {
-        const user = new UserAuth(...userDate)
-        console.log(user);
-    } else if (e.target.id === 'signinBtn') {
-        const user = new UserSignin(...userDate)
-        console.log(user);
-    }
+    const user = new UserSignin(...userDate)
+    console.log(user);
 }
 
 for (let item of inputFocusBlur) {

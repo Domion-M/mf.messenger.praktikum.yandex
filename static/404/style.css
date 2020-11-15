@@ -1,0 +1,10 @@
+.pageError__number {
+  font-size: 3rem;
+}
+.pageError__text {
+  font-size: 1.4rem;
+  margin: 1.2rem 0 4rem;
+}
+.pageError__href {
+  color: #3369f3;
+}

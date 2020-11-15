@@ -1,0 +1,121 @@
+.changeAvatar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+.changeAvatar__windowChangeAvatar {
+  background: #ffffff;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+  border-radius: 12px;
+  padding: 40px 30px;
+  width: 340px;
+  height: 257px;
+}
+.input__file {
+  visibility: hidden;
+  position: absolute;
+}
+.input_file_btn {
+  display: block;
+  color: #3369f3;
+  text-decoration: underline;
+  padding: 30px 20px 40px;
+  cursor: pointer;
+}
+.returnPage {
+  flex: 1 5%;
+  background: #fbfbfb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.returnPage__returnBtn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3369f3;
+  border-radius: 50%;
+}
+.returnPage__returnBtn > span {
+  width: 10px;
+  height: 1px;
+  background: #fff;
+  position: relative;
+}
+.returnPage__returnBtn > span::before,
+.returnPage__returnBtn > span::after {
+  content: "";
+  width: 4px;
+  height: 1px;
+  background: #fff;
+  position: absolute;
+  left: 0;
+}
+.returnPage__returnBtn > span::before {
+  top: -2px;
+  transform: rotate(-45deg);
+}
+.returnPage__returnBtn > span::after {
+  bottom: -2px;
+  transform: rotate(45deg);
+}
+.userProfile {
+  max-width: 510px;
+  width: 100%;
+}
+.userProfile__avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.userProfile__avatar > div {
+  width: 130px;
+  height: 130px;
+  background: #efefef;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.userProfile__dataProfile__hover {
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  padding: 20px;
+}
+.userProfile__avatar > div:hover .userProfile__dataProfile__hover {
+  display: flex;
+}
+.userProfile__dataProfile__list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+  font-size: 13px;
+}
+.chengeDataUser {
+  color: #999999;
+}
+.userProfile__action {
+  margin-top: 100px;
+  font-size: 13px;
+}
+.userProfile__action__btn {
+  color: #3369f3;
+}
+.userProfile__action__exitProfile {
+  color: #ff0000;
+}
