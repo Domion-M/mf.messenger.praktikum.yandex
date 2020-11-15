@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>User profile</title>
+</head>
+
+<body>
+    <main class="d-flex">
+        <div class="returnPage">
+            <button class="returnPage__returnBtn">
+                <span></span>
+            </button>
+        </div>
+        <div class="wrapPage text-center">
+            <div class="userProfile">
+                <div class="userProfile__avatar">
+                    <div class="userProfile__dataProfile">
+                        <div class="userProfile__dataProfile__hover">
+                            Поменять аватар
+                        </div>
+                    </div>
+                    <h3>Test</h3>
+                </div>
+                <form action="/" method="POST">
+                    <div>
+                        <div class="userProfile__dataProfile">
+                            <div class="userProfile__dataProfile__list">
+                                <div class="nameData">Почта</div>
+                                <div class="chengeDataUser"><input type="text" value="yandex@ya.ru" name="email"></div>
+                            </div>
+                            <div class="userProfile__dataProfile__list">
+                                <div class="nameData">Логин</div>
+                                <div class="chengeDataUser"><input type="text" value="VasiaPupkin" name="login"></div>
+                            </div>
+                            <div class="userProfile__dataProfile__list">
+                                <div class="nameData">Имя</div>
+                                <div class="chengeDataUser"><input type="text" value="Алексей" name="first_name"></div>
+                            </div>
+                            <div class="userProfile__dataProfile__list">
+                                <div class="nameData">Фамилия</div>
+                                <div class="chengeDataUser"><input type="text" value="Алексеев" name="second_name">
+                                </div>
+                            </div>
+                            <div class="userProfile__dataProfile__list">
+                                <div class="nameData">Имя в чате</div>
+                                <div class="chengeDataUser"><input type="text" value="Бодрый" name="display_name"></div>
+                            </div>
+                            <div class="userProfile__dataProfile__list">
+                                <div class="nameData">Телефон</div>
+                                <div class="chengeDataUser">
+                                    <input type="text" value="8 800 2000 600" name="phone">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="userProfile__action">
+                            <button class="generalBtn logArray saveData" id="userData">Сохранить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="./assets/js/changeData.js"></script>
+</body>
+
+</html>
