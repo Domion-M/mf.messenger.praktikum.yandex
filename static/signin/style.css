@@ -1,46 +1,46 @@
-.loginAndSigninForm {
+.login-and-signin-form {
   width: 340px;
   padding: 30px;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
   border-radius: 12px;
 }
-.loginAndSigninForm__title {
+.login-and-signin-form__title {
   margin-top: 20px;
 }
-.loginAndSigninForm__entry {
+.login-and-signin-form__entry {
   position: relative;
   margin: 2.5rem 0;
 }
-.loginAndSigninForm__entry input {
+.login-and-signin-form__entry input {
   border-bottom: 1px solid #3369f3;
   padding: 6px 0;
 }
-.loginAndSigninForm__entry__errorValid,
-.loginAndSigninForm__entry__placeholder {
+.login-and-signin-form__entry__error-valid,
+.login-and-signin-form__entry__placeholder {
   position: absolute;
   left: 0;
   pointer-events: none;
 }
-.loginAndSigninForm__entry__placeholder {
+.login-and-signin-form__entry__placeholder {
   color: #999999;
   font-size: 13px;
   bottom: 6px;
   transition: 0.3s;
 }
-.loginAndSigninForm__entry__placeholder.active {
+.login-and-signin-form__entry__placeholder.active {
   font-size: 10px;
   bottom: 100%;
 }
-.loginAndSigninForm__entry__errorValid {
+.login-and-signin-form__entry__error-valid {
   color: #ff2f2f;
   font-size: 13px;
   bottom: -20px;
 }
-.loginAndSigninForm__entry__bottomCheck {
+.login-and-signin-form__entry__bottom-check {
   margin-top: 1rem;
   color: #3369f3;
   font-size: 13px;
 }
-.loginAndSigninForm__entry__errorValid {
+.login-and-signin-form__entry__error-valid {
   display: none;
 }

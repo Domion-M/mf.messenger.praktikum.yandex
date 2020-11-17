@@ -1,11 +1,11 @@
-.returnPage {
+.return-page {
   flex: 1 5%;
   background: #fbfbfb;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.returnPage__returnBtn {
+.return-page__return-btn {
   width: 28px;
   height: 28px;
   display: flex;
@@ -14,14 +14,14 @@
   background: #3369f3;
   border-radius: 50%;
 }
-.returnPage__returnBtn > span {
+.return-page__return-btn > span {
   width: 10px;
   height: 1px;
   background: #fff;
   position: relative;
 }
-.returnPage__returnBtn > span::before,
-.returnPage__returnBtn > span::after {
+.return-page__return-btn > span::before,
+.return-page__return-btn > span::after {
   content: "";
   width: 4px;
   height: 1px;
@@ -29,25 +29,25 @@
   position: absolute;
   left: 0;
 }
-.returnPage__returnBtn > span::before {
+.return-page__return-btn > span::before {
   top: -2px;
   transform: rotate(-45deg);
 }
-.returnPage__returnBtn > span::after {
+.return-page__return-btn > span::after {
   bottom: -2px;
   transform: rotate(45deg);
 }
-.userProfile {
+.user-profile {
   max-width: 510px;
   width: 100%;
 }
-.userProfile__avatar {
+.user-profile__avatar {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.userProfile__avatar > div {
+.user-profile__avatar > div {
   width: 130px;
   height: 130px;
   background: #efefef;
@@ -56,7 +56,7 @@
   cursor: pointer;
   overflow: hidden;
 }
-.userProfile__dataProfile__hover {
+.user-profile__data-profile__hover {
   width: 100%;
   height: 100%;
   display: none;
@@ -67,10 +67,10 @@
   font-size: 14px;
   padding: 20px;
 }
-.userProfile__avatar > div:hover .userProfile__dataProfile__hover {
+.user-profile__avatar > div:hover .user-profile__data-profile__hover {
   display: flex;
 }
-.userProfile__dataProfile__list {
+.user-profile__data-profile__list {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -78,17 +78,17 @@
   border-bottom: 1px solid #eaeaea;
   font-size: 13px;
 }
-.chengeDataUser input {
+.chenge-data-user input {
   color: #999999;
   text-align: end;
 }
-.userProfile__action {
+.user-profile__action {
   margin-top: 100px;
   font-size: 13px;
 }
-.userProfile__action__btn {
+.user-profile__action__btn {
   color: #3369f3;
 }
-.userProfile__action__exitProfile {
+.user-profile__action__exit-profile {
   color: #ff0000;
 }

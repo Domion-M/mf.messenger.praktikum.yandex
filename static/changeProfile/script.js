@@ -1,4 +1,4 @@
-const save = document.querySelector('.saveData')
+const save = document.querySelector('.save-data');
 
 class UserData {
     constructor(mail, login, first_name, second_name, display_name, phone) {
@@ -9,18 +9,17 @@ class UserData {
         this.display_name = display_name
         this.phone = phone
     }
-}
+};
 
-function saveNewPassword(e) {
-    e.preventDefault()
-    const valInput = []
-    const form = document.forms
+function saveNewDataUser(e) {
+    e.preventDefault();
+    const valInput = [];
+    const form = document.forms;
     for (let input of form[0].elements) {
-        valInput.push(input.value)
+        valInput.push(input.value);
     }
-    const newPassword = new UserData(...valInput)
+    const newPassword = new UserData(...valInput);
     console.log(newPassword);
-
 }
 
-save.addEventListener('click', saveNewPassword)
+save.addEventListener('click', saveNewDataUser);

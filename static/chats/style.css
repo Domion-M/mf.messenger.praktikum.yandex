@@ -1,16 +1,16 @@
-.windowChat {
+.window-chat {
   width: 100%;
   height: 100%;
   display: flex;
 }
-.windowChat__select {
+.window-chat__select {
   flex: 1 30%;
 }
-.windowChat__message {
+.window-chat__message {
   flex: 1 100%;
 }
 /* chat > head  */
-.windowChat__select__head {
+.window-chat__select__head {
   padding-bottom: 15px;
   border-bottom: 1px solid #eaeaea;
   background: #fff;
@@ -18,12 +18,12 @@
   top: 0;
   z-index: 100;
 }
-.windowChat__select__head .profile {
+.window-chat__select__head .profile {
   display: flex;
   justify-content: flex-end;
   padding: 20px 0;
 }
-.windowChat__select__head .profile span {
+.window-chat__select__head .profile span {
   color: #999999;
   font-size: 12px;
   position: relative;
@@ -32,8 +32,8 @@
   padding-right: 15px;
   cursor: pointer;
 }
-.windowChat__select__head .profile span::after,
-.windowChat__select__head .profile span::before {
+.window-chat__select__head .profile span::after,
+.window-chat__select__head .profile span::before {
   content: "";
   display: inline-block;
   width: 6px;
@@ -43,24 +43,24 @@
   background: #999999;
   margin-left: 8px;
 }
-.windowChat__select__head .profile span::after {
+.window-chat__select__head .profile span::after {
   transform: rotate(45deg);
   top: 4.5px;
 }
-.windowChat__select__head .profile span::before {
+.window-chat__select__head .profile span::before {
   transform: rotate(-45deg);
   bottom: 4.5px;
 }
-.windowChat__select__head .search {
+.window-chat__select__head .search {
   position: relative;
 }
-.windowChat__select__head .search input {
+.window-chat__select__head .search input {
   height: 32px;
   background: #eaeaea;
   border-radius: 5px;
   padding: 0 30px;
 }
-.windowChat__select__head .search span {
+.window-chat__select__head .search span {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -69,12 +69,12 @@
   font-size: 12px;
 }
 /* chat > listChat */
-.windowChat__select {
+.window-chat__select {
   padding: 0 10px;
   border-right: 1px solid #eaeaea;
   overflow: auto;
 }
-.windowChat__select__listChat__chat {
+.window-chat__select__list-chat__chat {
   height: 71px;
   position: relative;
   display: flex;
@@ -83,36 +83,36 @@
   cursor: pointer;
   margin-bottom: 1px;
 }
-.windowChat__select__listChat__chat:hover {
+.window-chat__select__list-chat__chat:hover {
   background: #eaf0fa;
 }
-.windowChat__select__listChat__chat.active {
+.window-chat__select__list-chat__chat.active {
   background: #e4edfd;
 }
-.windowChat__select__listChat__chat .img {
+.window-chat__select__list-chat__chat .img {
   flex: 1 25%;
 }
-.windowChat__select__listChat__chat .img .imgChat {
+.window-chat__select__list-chat__chat .img .img-chat {
   display: flex;
   width: 47px;
   height: 47px;
   border-radius: 50%;
   background: #efefef;
 }
-.windowChat__select__listChat__chat .info {
+.window-chat__select__list-chat__chat .info {
   flex: 1 100%;
   padding-left: 8px;
 }
-.windowChat__select__listChat__chat .info .nameChat {
+.window-chat__select__list-chat__chat .info .name-chat {
   font-size: 13px;
 }
-.windowChat__select__listChat__chat .info .lastMessage {
+.window-chat__select__list-chat__chat .info .last-message {
   font-size: 12px;
   line-height: 15px;
   color: #999999;
 }
 
-.windowChat__select__listChat__chat .date {
+.window-chat__select__list-chat__chat .date {
   flex: 1 20%;
   font-size: 9px;
   line-height: 13px;
@@ -121,7 +121,7 @@
   display: flex;
   justify-content: flex-end;
 }
-.alertMessage {
+.alert-message {
   width: 20px;
   height: 20px;
   display: flex;
@@ -136,26 +136,26 @@
   border-radius: 50%;
 }
 /* message >head */
-.windowChat__message {
+.window-chat__message {
   padding: 0 20px;
 }
-.windowChat__message__wrap {
+.window-chat__message__wrap {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.windowChat__message__headChat {
+.window-chat__message__head-chat {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
   border-bottom: 1px solid #eaeaea;
 }
-.windowChat__message__headChat .chatImg {
+.window-chat__message__head-chat .chat-img {
   display: flex;
   align-items: center;
 }
-.windowChat__message__headChat .chatMenu {
+.window-chat__message__head-chat .chat-menu {
   width: 25px;
   height: 25px;
   display: flex;
@@ -164,10 +164,10 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.windowChat__message__headChat .chatMenu.active {
+.window-chat__message__head-chat .chat-menu.active {
   background: #f5f5f5;
 }
-.windowChat__message__headChat .chatMenu span {
+.window-chat__message__head-chat .chat-menu span {
   display: inline-block;
   width: 3px;
   height: 3px;
@@ -175,8 +175,8 @@
   background: #000;
   position: relative;
 }
-.windowChat__message__headChat .chatMenu span::after,
-.windowChat__message__headChat .chatMenu span::before {
+.window-chat__message__head-chat .chat-menu span::after,
+.window-chat__message__head-chat .chat-menu span::before {
   content: "";
   display: inline-block;
   width: 3px;
@@ -185,18 +185,18 @@
   border-radius: 50%;
   background: #000;
 }
-.windowChat__message__headChat .chatMenu.active span,
-.windowChat__message__headChat .chatMenu.active span::after,
-.windowChat__message__headChat .chatMenu.active span::before {
+.window-chat__message__head-chat .chat-menu.active span,
+.window-chat__message__head-chat .chat-menu.active span::after,
+.window-chat__message__head-chat .chat-menu.active span::before {
   background: #3369f3;
 }
-.windowChat__message__headChat .chatMenu span::before {
+.window-chat__message__head-chat .chat-menu span::before {
   top: -6px;
 }
-.windowChat__message__headChat .chatMenu span::after {
+.window-chat__message__head-chat .chat-menu span::after {
   bottom: -6px;
 }
-.windowChat__message__headChat .chatImg > span {
+.window-chat__message__head-chat .chat-img > span {
   display: inline-block;
   width: 34px;
   height: 34px;
@@ -204,7 +204,7 @@
   background: #efefef;
   border-radius: 50%;
 }
-.windowChat__message__wrap__modalMenu {
+.window-chat__message__wrap__modal-menu {
   position: absolute;
   top: 70px;
   right: 15px;
@@ -214,7 +214,7 @@
   padding: 15px;
   display: none;
 }
-.menuListAction {
+.menu-list-action {
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -222,13 +222,13 @@
   padding: 2px;
   border-radius: 8px;
 }
-.menuListAction:hover {
+.menu-list-action:hover {
   background: #eaf0fa;
 }
-.menuListAction {
+.menu-list-action {
   margin: 5px 0;
 }
-.menuListAction > div {
+.menu-list-action > div {
   width: 22px;
   height: 22px;
   border: 2px solid #3369f3;
@@ -238,90 +238,90 @@
   align-items: center;
   justify-content: center;
 }
-.menuListAction > div::after,
-.menuListAction > div::before {
+.menu-list-action > div::after,
+.menu-list-action > div::before {
   content: "";
   width: 10px;
   height: 2px;
   background: #3369f3;
   position: absolute;
 }
-.menuListAction > div::after {
+.menu-list-action > div::after {
   transform: rotate(90deg);
 }
-.menuListAction__delete::before {
+.menu-list-action__delete::before {
   transform: rotate(-45deg);
 }
-.menuListAction > .menuListAction__delete::after {
+.menu-list-action > .menu-list-action__delete::after {
   transform: rotate(45deg);
 }
-.menuListAction__delete.delete {
+.menu-list-action__delete.delete {
   border-color: #ff0000;
 }
-.menuListAction__delete.delete::before,
-.menuListAction > .menuListAction__delete.delete::after {
+.menu-list-action__delete.delete::before,
+.menu-list-action > .menu-list-action__delete.delete::after {
   background: #ff0000;
 }
 /* message >bodychat */
-.windowChat__message__bodyChat {
+.window-chat__message__body-chat {
   flex: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 20px;
 }
-.compamionMessage {
+.compamion-message {
   display: flex;
   justify-content: flex-start;
 }
-.yourMassege p,
-.compamionMessage p {
+.your-massege p,
+.compamion-message p {
   padding: 10px;
   border-radius: 15px;
   min-width: 10%;
   max-width: 45%;
   margin-bottom: 10px;
 }
-.compamionMessage p {
+.compamion-message p {
   background: #f8f8f8;
 }
-.yourMassege {
+.your-massege {
   display: flex;
   justify-content: flex-end;
 }
-.yourMassege p {
+.your-massege p {
   background: #e4edfd;
 }
-.windowChat__message__sendMessage {
+.window-chat__message__send-message {
   border-top: 1px solid #eaeaea;
   display: flex;
   padding: 10px 0;
 }
-.windowChat__message__sendMessage .loadFile {
+.window-chat__message__send-message .load-file {
   flex: 1 5%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.windowChat__message__sendMessage .loadFile img {
+.window-chat__message__send-message .load-file img {
   width: 50%;
   cursor: pointer;
 }
-.windowChat__message__sendMessage .sendMail {
+.window-chat__message__send-message .send-mail {
   flex: 1 100%;
 }
-.windowChat__message__sendMessage .sendMail input {
+.window-chat__message__send-message .send-mail input {
   background: #eaeaea;
   border-radius: 30px;
   padding: 10px 20px;
 }
-.windowChat__message__sendMessage .sendBtnMail {
+.window-chat__message__send-message .send-btn-mail {
   flex: 1 5%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.windowChat__message__sendMessage .sendBtnMail > div {
+.window-chat__message__send-message .send-btn-mail > button {
   width: 28px;
   height: 28px;
   display: flex;
@@ -330,14 +330,14 @@
   background: #3369f3;
   border-radius: 50%;
 }
-.windowChat__message__sendMessage .sendBtnMail > div > span {
+.window-chat__message__send-message .send-btn-mail > button > span {
   width: 10px;
   height: 1px;
   background: #fff;
   position: relative;
 }
-.windowChat__message__sendMessage .sendBtnMail > div > span::before,
-.windowChat__message__sendMessage .sendBtnMail > div > span::after {
+.window-chat__message__send-message .send-btn-mail > button > span::before,
+.window-chat__message__send-message .send-btn-mail > button > span::after {
   content: "";
   width: 4px;
   height: 1px;
@@ -345,11 +345,11 @@
   position: absolute;
   right: 0;
 }
-.windowChat__message__sendMessage .sendBtnMail > div > span::before {
+.window-chat__message__send-message .send-btn-mail > button > span::before {
   top: -2px;
   transform: rotate(45deg);
 }
-.windowChat__message__sendMessage .sendBtnMail > div > span::after {
+.window-chat__message__send-message .send-btn-mail > button > span::after {
   bottom: -2px;
   transform: rotate(-45deg);
 }

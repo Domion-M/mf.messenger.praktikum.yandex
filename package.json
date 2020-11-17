@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/Domion-M/mf.messenger.praktikum.yandex#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "4.17.1"
   }
 }

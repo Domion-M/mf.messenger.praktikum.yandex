@@ -1,5 +1,5 @@
-const inputFocusBlur = document.querySelectorAll('.loginAndSigninForm__entry input')
-const logUserDate = document.querySelector('.logArray')
+const inputFocusBlur = document.querySelectorAll('.login-and-signin-form__entry input');
+const logUserDate = document.querySelector('.log-array');
 
 
 
@@ -13,7 +13,7 @@ class UserSignin {
         this.phone = phone
     }
 
-}
+};
 
 function validFocusAndBlurInput(e) {
     const inputPlaceholder = this.nextSibling.nextSibling
@@ -22,23 +22,23 @@ function validFocusAndBlurInput(e) {
     } else if (e.type === 'blur') {
         this.value.trim() === '' && inputPlaceholder.classList.remove('active')
     }
-}
+};
 
 function logDateUser(e) {
-    e.preventDefault()
-    const userDate = []
+    e.preventDefault();
+    const userDate = [];
     for (let item of inputFocusBlur) {
-        userDate.push(item.value)
+        userDate.push(item.value);
     }
-    const user = new UserSignin(...userDate)
+    const user = new UserSignin(...userDate);
     console.log(user);
-}
+};
 
 for (let item of inputFocusBlur) {
-    item.addEventListener('focus', validFocusAndBlurInput)
-    item.addEventListener('blur', validFocusAndBlurInput)
-}
+    item.addEventListener('focus', validFocusAndBlurInput);
+    item.addEventListener('blur', validFocusAndBlurInput);
+};
 
-logUserDate.addEventListener('click', logDateUser)
+logUserDate.addEventListener('click', logDateUser);
 
 
