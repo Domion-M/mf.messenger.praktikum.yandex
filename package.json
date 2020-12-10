@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "yandex praktikun cours",
   "main": "index.js",
+  "engines": {
+    "node": "14.15.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --build --watch",
+    "clean": "tsc --build --clean"
   },
   "repository": {
     "type": "git",
@@ -22,6 +26,10 @@
   },
   "homepage": "https://github.com/Domion-M/mf.messenger.praktikum.yandex#readme",
   "dependencies": {
-    "express": "4.17.1"
+    "@types/handlebars": "4.1.0",
+    "@types/node": "14.14.10",
+    "express": "4.17.1",
+    "handlebars": "^4.7.6",
+    "typescript": "4.1.2"
   }
 }
