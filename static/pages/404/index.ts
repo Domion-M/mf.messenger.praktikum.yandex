@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { pageInfoType } from '../../types/index';
 
 const pageInfo: pageInfoType = {

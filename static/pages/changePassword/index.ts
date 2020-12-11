@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import { pageInfoType } from '../../types/index';
@@ -93,6 +94,7 @@ class UserData {
         this.new_password = new_password;
         this.new_password_too = new_password_too;
     };
+
     checkPass() {
         if (this.new_password === this.new_password_too) {
             return true;

@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import Input from '../../components/Input/index.js';
@@ -109,7 +110,6 @@ render('.btn-container', buttonInfo);
 render('.input-container', inputLogin);
 
 class UserSignin {
-
     constructor(
         public email: string,
         public login: string,
@@ -117,12 +117,12 @@ class UserSignin {
         public second_name: string,
         public phone: string,
         public password: string) {
-        this.login = login
-        this.password = password
-        this.email = email
-        this.first_name = first_name
-        this.second_name = second_name
-        this.phone = phone
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.first_name = first_name;
+        this.second_name = second_name;
+        this.phone = phone;
     };
 
 };
@@ -136,7 +136,7 @@ function logDateUser(e: any) {
             return
         } else {
             userDate.push((<HTMLInputElement>el).value);
-        }
+        };
     });
     if (userDate.length === inputFocusBlur.length) {
         if (userDate[5] === userDate[6]) {
@@ -145,9 +145,8 @@ function logDateUser(e: any) {
         }
         else {
             (<HTMLInputElement>inputFocusBlur[6]).focus();
-        }
-
-    }
+        };
+    };
 };
 
 const inputFocusBlur = document.querySelectorAll('.login-and-signin-form__entry input');

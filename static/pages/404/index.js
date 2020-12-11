@@ -19,5 +19,4 @@ const template = Handlebars.compile(tpl);
 if (root) {
     root.innerHTML = template(pageInfo);
 }
-export {};
 //# sourceMappingURL=index.js.map

@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { fragmentPropsType } from '../../types/index.js';
 import Block from '../../utils/Block/index.js';
 

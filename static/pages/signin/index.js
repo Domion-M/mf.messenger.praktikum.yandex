@@ -128,6 +128,7 @@ function logDateUser(e) {
         else {
             userDate.push(el.value);
         }
+        ;
     });
     if (userDate.length === inputFocusBlur.length) {
         if (userDate[5] === userDate[6]) {
@@ -137,7 +138,9 @@ function logDateUser(e) {
         else {
             inputFocusBlur[6].focus();
         }
+        ;
     }
+    ;
 }
 ;
 const inputFocusBlur = document.querySelectorAll('.login-and-signin-form__entry input');

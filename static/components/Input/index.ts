@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import Block from '../../utils/Block/index.js';
 
 type inputPropsType = {

@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import Modal from '../../components/Modal/index.js';
@@ -134,12 +135,12 @@ class UserData {
         public second_name: string,
         public phone: string,
         public display_name: string) {
-        this.login = login
-        this.display_name = display_name
-        this.email = email
-        this.first_name = first_name
-        this.second_name = second_name
-        this.phone = phone
+        this.login = login;
+        this.display_name = display_name;
+        this.email = email;
+        this.first_name = first_name;
+        this.second_name = second_name;
+        this.phone = phone;
     };
 };
 

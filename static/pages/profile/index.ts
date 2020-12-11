@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import { pageInfoType } from '../../types/index';
