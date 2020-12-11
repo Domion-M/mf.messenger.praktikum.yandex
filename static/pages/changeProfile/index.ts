@@ -1,8 +1,8 @@
-import { render } from '../../utils/index.js';
+import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import Modal from '../../components/Modal/index.js';
 import Fragment from '../../components/Fragment/index.js';
-import { pageInfoType } from '../500/index.js';
+import { pageInfoType } from '../../types/index';
 
 const pageInfo: pageInfoType = {
     page: {
@@ -27,32 +27,32 @@ const tpl = `
                 <div class="user-profile__data-profile">
                     <div class="user-profile__data-profile__list">
                         <div class="name-data">Почта</div>
-                        <div class="chenge-data-user"><input type="text" value="yandex@ya.ru" name="email">
+                        <div class="chenge-data-user"><input type="text" value="yandex@ya.ru" name="email" class="input-data">
                         </div>
                     </div>
                     <div class="user-profile__data-profile__list">
                         <div class="name-data">Логин</div>
-                        <div class="chenge-data-user"><input type="text" value="VasiaPupkin" name="login"></div>
+                        <div class="chenge-data-user"><input type="text" value="VasiaPupkin" name="login" class="input-data"></div>
                     </div>
                     <div class="user-profile__data-profile__list">
                         <div class="name-data">Имя</div>
-                        <div class="chenge-data-user"><input type="text" value="Алексей" name="first_name">
+                        <div class="chenge-data-user"><input type="text" value="Алексей" name="first_name" class="input-data">
                         </div>
                     </div>
                     <div class="user-profile__data-profile__list">
                         <div class="name-data">Фамилия</div>
-                        <div class="chenge-data-user"><input type="text" value="Алексеев" name="second_name">
+                        <div class="chenge-data-user"><input type="text" value="Алексеев" name="second_name" class="input-data">
                         </div>
                     </div>
                     <div class="user-profile__data-profile__list">
                         <div class="name-data">Имя в чате</div>
-                        <div class="chenge-data-user"><input type="text" value="Бодрый" name="display_name">
+                        <div class="chenge-data-user"><input type="text" value="Бодрый" name="display_name" class="input-data">
                         </div>
                     </div>
                     <div class="user-profile__data-profile__list">
                         <div class="name-data">Телефон</div>
                         <div class="chenge-data-user">
-                            <input type="text" value="8 800 2000 600" name="phone">
+                            <input type="text" value="8 800 2000 600" name="phone" class="input-data">
                         </div>
                     </div>
                 </div>
@@ -67,9 +67,10 @@ const tpl = `
 </main>
 {{/with}}`;
 
-const root: HTMLElement = document.getElementById('root');
+const root: HTMLElement | null = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-root.innerHTML = template(pageInfo);
+if (root) root.innerHTML = template(pageInfo);
+
 
 const buttonSave = new Button({
     infoElement: {
@@ -81,6 +82,7 @@ const buttonSave = new Button({
             text: 'Сохранить',
         },
     },
+    onClick: seveDataUser,
 });
 
 const returnBtn = new Button({
@@ -113,7 +115,6 @@ const fragAvatarmodal = new Fragment({
         }
     },
     onClick: openChengeAvatarModal,
-
 });
 
 render('.user-profile__action', buttonSave);
@@ -121,15 +122,47 @@ render('.return-page', returnBtn);
 render('.user-profile__data-profile', fragAvatarmodal);
 render('main', modal);
 
-const dotClickModalWindow = document.querySelector('.change-avatar__window-change-avatar');
-dotClickModalWindow.addEventListener('click', e => e.stopPropagation());
+const dotClickModalWindow: HTMLElement | null = document.querySelector('.change-avatar__window-change-avatar');
+const modalWindow = document.querySelector('.change-avatar ');
+if (dotClickModalWindow) dotClickModalWindow.addEventListener('click', e => e.stopPropagation());
+
+class UserData {
+    constructor(
+        public email: string,
+        public login: string,
+        public first_name: string,
+        public second_name: string,
+        public phone: string,
+        public display_name: string) {
+        this.login = login
+        this.display_name = display_name
+        this.email = email
+        this.first_name = first_name
+        this.second_name = second_name
+        this.phone = phone
+    };
+};
 
 function openChengeAvatarModal() {
-    const modal = document.querySelector('.change-avatar ');
-    (<HTMLInputElement>modal).style.display = 'flex';
+    (<HTMLInputElement>modalWindow).style.display = 'flex';
 };
 
 function closeChengeAvatarModal() {
-    const modal = document.querySelector('.change-avatar ');
-    (<HTMLInputElement>modal).style.display = 'none';
+    (<HTMLInputElement>modalWindow).style.display = 'none';
+};
+function seveDataUser(e: Event) {
+    e.preventDefault();
+    const valueInputChange = document.querySelectorAll('.input-data');
+    const userNewData: Array<string> = [];
+    valueInputChange.forEach((el) => {
+        if ((<HTMLInputElement>el).value.trim() === '') {
+            (<HTMLInputElement>el).focus();
+        } else {
+            userNewData.push((<HTMLInputElement>el).value);
+        }
+        if (userNewData.length === valueInputChange.length) {
+            const newDataUser = new UserData(userNewData[0], userNewData[1], userNewData[2], userNewData[3], userNewData[4], userNewData[5]);
+            console.log(newDataUser);
+        };
+    });
 };

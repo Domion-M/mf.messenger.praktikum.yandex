@@ -16,7 +16,7 @@
     "strict": false,
     "noImplicitAny": true,
     "alwaysStrict": false,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
   },
   "include": [
     "static/**/*",

@@ -1,4 +1,4 @@
-import { render } from '../../utils/index.js';
+import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import Fragment from '../../components/Fragment/index.js';
 import Input from '../../components/Input/index.js';
@@ -103,7 +103,9 @@ const tpl = `
 {{/with}}`;
 const root = document.querySelector('#root');
 const template = Handlebars.compile(tpl);
-root.innerHTML = template(pageInfo);
+if (root) {
+    root.innerHTML = template(pageInfo);
+}
 const sendMail = new Button({
     className: "send-btn-mail",
     infoElement: {
@@ -148,7 +150,8 @@ render('.send-mail', inputLogin);
 function openModalMenu() {
     this.classList.toggle('active');
     const modalMenu = document.querySelector('.window-chat__message__wrap__modal-menu');
-    modalMenu.classList.toggle('display');
+    if (modalMenu)
+        modalMenu.classList.toggle('display');
 }
 ;
 const inputMessage = document.querySelector('input[name="message"]');
@@ -182,5 +185,6 @@ function sendMailKeyboardEnter(e) {
         sendMailChat(e);
     }
 }
-inputMessage.addEventListener('keydown', sendMailKeyboardEnter);
+if (inputMessage)
+    inputMessage.addEventListener('keydown', sendMailKeyboardEnter);
 //# sourceMappingURL=index.js.map

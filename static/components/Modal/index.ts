@@ -1,4 +1,4 @@
-import Block from '../Block/index.js';
+import Block from '../../utils/Block/index.js';
 
 type modalProps = {
     infoElement: {
@@ -7,8 +7,8 @@ type modalProps = {
             name: string;
         }
     },
-    className?: string,
-    onClick: () => void
+    className?: string;
+    onClick: () => void;
 }
 
 class Modal extends Block {

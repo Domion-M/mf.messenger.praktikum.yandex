@@ -16,5 +16,8 @@ const tpl = `   {{#with page}}
 {{/with}}`;
 const root = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-root.innerHTML = template(pageInfo);
+if (root) {
+    root.innerHTML = template(pageInfo);
+}
+export {};
 //# sourceMappingURL=index.js.map

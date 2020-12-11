@@ -1,5 +1,4 @@
-import Handlebars from 'handlebars';
-import { pageInfoType } from '../500';
+import { pageInfoType } from '../../types/index';
 
 const pageInfo: pageInfoType = {
     "page":
@@ -9,7 +8,6 @@ const pageInfo: pageInfoType = {
         goToHome: 'Назад к чатам',
     },
 };
-
 
 const tpl = `   {{#with page}}
 <main class="wrap-page text-center">
@@ -21,7 +19,8 @@ const tpl = `   {{#with page}}
 </main>
 {{/with}}`;
 
-const root = document.getElementById('root');
+const root: Element | null = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-root.innerHTML = template(pageInfo);
-
+if (root) {
+    root.innerHTML = template(pageInfo);
+}

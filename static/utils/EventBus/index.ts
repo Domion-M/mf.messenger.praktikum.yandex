@@ -1,16 +1,14 @@
-export interface EventType {
-    on: (event: string, callback: void) => void;
-    off: (event: string, callback: void) => void;
-    emit: (event: string, oldProps?: {}, nextProps?: {}) => void;
-}
+import { EventType } from "../../types";
 
 class EventBus implements EventType {
-    listeners: any;
+    listeners: {
+        [s: string]: Function[];
+    };
     constructor() {
         this.listeners = {};
-    }
+    };
 
-    on(event: any, callback: any) {
+    on(event: any, callback: Function) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }
@@ -18,22 +16,22 @@ class EventBus implements EventType {
         this.listeners[event].push(callback);
     }
 
-    off(event: any, callback: any) {
+    off(event: string, callback: any) {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
         };
 
         this.listeners[event] = this.listeners[event].filter(
-            (listener: void) => listener !== callback,
+            (listener: Function) => listener !== callback,
         );
     };
 
-    emit(event: any, ...args: any) {
+    emit(event: string, ...args: any) {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
         };
 
-        this.listeners[event].forEach(function (listener: any) {
+        this.listeners[event].forEach(function (listener: Function) {
             listener(...args);
         });
     };

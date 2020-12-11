@@ -1,14 +1,5 @@
-import Block from '../Block/index.js';
-
-type fragmentPropsType = {
-    className?: string;
-    infoElement: {
-        fragment: {
-            text?: string
-        }
-    },
-    onClick: () => void;
-}
+import { fragmentPropsType } from '../../types/index.js';
+import Block from '../../utils/Block/index.js';
 
 class Fragment extends Block {
 
@@ -17,7 +8,7 @@ class Fragment extends Block {
     };
 
     render() {
-        const { infoElement } = this.props
+        const { infoElement } = this.props;
         const tpl = `{{#with fragment}}
         <span>{{text}}</span>
     {{/with}}`;

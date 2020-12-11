@@ -1,4 +1,4 @@
-import Block from '../Block/index.js';
+import Block from '../../utils/Block/index.js';
 class Button extends Block {
     constructor(localProps) {
         super("div", localProps);

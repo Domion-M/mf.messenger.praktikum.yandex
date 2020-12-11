@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 const pageInfo = {
     page: {
         title: '500',
@@ -16,6 +17,7 @@ const tpl = `   {{#with page}}
 {{/with}}`;
 const root = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-root.innerHTML = template(pageInfo);
-export {};
+if (root) {
+    root.innerHTML = template(pageInfo);
+}
 //# sourceMappingURL=index.js.map

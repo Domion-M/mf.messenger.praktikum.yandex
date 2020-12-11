@@ -1,6 +1,5 @@
-import { render } from '../../utils/index.js';
+import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
-const root = document.getElementById('root');
 const pageInfo = {
     page: {
         title: 'Профиль',
@@ -55,8 +54,10 @@ const tpl = `
 </div>
 </main>
 {{/with}}`;
+const root = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-root.innerHTML = template(pageInfo);
+if (root)
+    root.innerHTML = template(pageInfo);
 const changeData = new Button({
     className: "user-profile__data-profile__list",
     infoElement: {

@@ -84,7 +84,7 @@ class Block {
         return true;
     }
     ;
-    get element() {
+    content() {
         return this._element;
     }
     ;
@@ -94,7 +94,7 @@ class Block {
         element.forEach((el) => {
             if (el.includes('on')) {
                 const act = el.slice(2).toLocaleLowerCase();
-                this.getContent().addEventListener(`${act}`, this.props[el]);
+                this.content().addEventListener(`${act}`, this.props[el]);
             }
             ;
         });
@@ -103,16 +103,12 @@ class Block {
     ;
     render() { }
     ;
-    getContent() {
-        return this.element;
-    }
-    ;
     show() {
-        this.getContent().style.display = "block";
+        this.content().style.display = "block";
     }
     ;
     hide() {
-        this.getContent().style.display = "none";
+        this.content().style.display = "none";
     }
     ;
 }

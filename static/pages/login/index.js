@@ -1,7 +1,6 @@
-import { render } from '../../utils/index.js';
+import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import Input from '../../components/Input/index.js';
-const root = document.getElementById('root');
 const pageInfo = {
     page: {
         title: 'Вход',
@@ -22,8 +21,10 @@ const tpl = `
 </div>
 </main>
 {{/with}}`;
+const root = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-root.innerHTML = template(pageInfo);
+if (root)
+    root.innerHTML = template(pageInfo);
 const buttonAuth = new Button({
     infoElement: {
         button: {

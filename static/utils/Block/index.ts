@@ -1,10 +1,10 @@
-import EventBus, { EventType } from '../EventBus/index.js';
+import { EventType } from '../../types/index.js';
+import EventBus from '../EventBus/index.js';
 
-export interface Props {
-    eventBus?: EventType;
-    props: any;
-    infoElement?: object;
+interface Props {
+    [K: string]: Function | string | object;
 }
+
 
 class Block {
 
@@ -76,11 +76,11 @@ class Block {
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     };
 
-    componentDidMount(oldProps: any) {
+    componentDidMount(oldProps: object) {
         console.log(oldProps);
     };
 
-    _componentDidUpdate(oldProps: any, newProps: any) {
+    _componentDidUpdate(oldProps: object, newProps: object) {
         const response = this.componentDidUpdate(oldProps, newProps);
 
         if (response) {
@@ -88,12 +88,12 @@ class Block {
         };
     };
 
-    componentDidUpdate(oldProps: any, newProps: any) {
+    componentDidUpdate(oldProps: object, newProps: object) {
         console.log(oldProps, newProps);
         return true;
     };
 
-    setProps = (nextProps: any) => {
+    setProps = (nextProps: object) => {
         if (!nextProps) {
             return;
         };
@@ -103,7 +103,7 @@ class Block {
         this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
     };
 
-    get element() {
+    content() {
         return this._element;
     };
 
@@ -111,10 +111,10 @@ class Block {
         const block = this.render();
         const element = Object.keys(this.props);
 
-        element.forEach((el: any) => {
+        element.forEach((el: string) => {
             if (el.includes('on')) {
                 const act = el.slice(2).toLocaleLowerCase();
-                this.getContent().addEventListener(`${act}`, this.props);
+                this.content().addEventListener(`${act}`, this.props[el]);
             };
         });
 
@@ -122,16 +122,13 @@ class Block {
     };
 
     render() { };
-    getContent() {
-        return this.element;
-    };
 
     show() {
-        this.getContent().style.display = "block";
+        this.content().style.display = "block";
     };
 
     hide() {
-        this.getContent().style.display = "none";
+        this.content().style.display = "none";
     };
 };
 export default Block;

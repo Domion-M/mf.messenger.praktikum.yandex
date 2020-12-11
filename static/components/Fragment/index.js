@@ -1,4 +1,4 @@
-import Block from '../Block/index.js';
+import Block from '../../utils/Block/index.js';
 class Fragment extends Block {
     constructor(props) {
         super("div", props);

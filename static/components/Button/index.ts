@@ -1,17 +1,5 @@
-import Block from '../Block/index.js';
-
-type buttonPropsType = {
-    className?: string;
-    infoElement: {
-        button: {
-            type: string;
-            className?: string;
-            id?: string;
-            text?: string;
-        },
-    },
-    onClick?: (e: any) => void;
-};
+import { buttonPropsType } from '../../types/index.js';
+import Block from '../../utils/Block/index.js';
 
 class Button extends Block {
 

@@ -1,7 +1,6 @@
-import { render } from '../../utils/index.js';
+import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import Input from '../../components/Input/index.js';
-const root = document.getElementById('root');
 const pageInfo = {
     page: {
         title: 'Регистрация',
@@ -22,8 +21,10 @@ const tpl = `
 </div>
 </main>
 {{/with}}`;
+const root = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-root.innerHTML = template(pageInfo);
+if (root)
+    root.innerHTML = template(pageInfo);
 const buttonAuth = new Button({
     infoElement: {
         button: {
@@ -128,7 +129,7 @@ function logDateUser(e) {
             userDate.push(el.value);
         }
     });
-    if (userDate.length === 7) {
+    if (userDate.length === inputFocusBlur.length) {
         if (userDate[5] === userDate[6]) {
             const user = new UserSignin(userDate[0], userDate[1], userDate[2], userDate[3], userDate[4], userDate[5]);
             console.log(user);
@@ -151,7 +152,9 @@ function validFocusAndBlurInput(e) {
             inputPlaceholder.classList.remove('active');
             inputPlaceholder.classList.add('error');
         }
+        ;
     }
+    ;
 }
 ;
 inputFocusBlur.forEach(item => {
