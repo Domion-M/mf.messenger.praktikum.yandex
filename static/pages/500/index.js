@@ -1,4 +1,3 @@
-import Handlebars from 'handlebars';
 const pageInfo = {
     page: {
         title: '500',
