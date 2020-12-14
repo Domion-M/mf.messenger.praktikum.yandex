@@ -215,17 +215,18 @@ class UserSignin {
     };
 
 };
-function logDateUser(e: any) {
+function logDateUser(e: Event) {
     e.preventDefault();
     const inputFocusBlur = document.querySelectorAll('.login-and-signin-form__entry input');
     const userDate: string[] = [];
     inputFocusBlur.forEach(el => {
-        if ((<HTMLInputElement>el).value.trim() === '') {
-            (<HTMLInputElement>el).focus()
-            return
-        } else {
+        const listClass = el.classList[1]
+        if (listClass === 'active') {
             userDate.push((<HTMLInputElement>el).value);
-        };
+        }
+        else {
+            (<HTMLInputElement>el).focus();
+        }
     });
     if (userDate.length === inputFocusBlur.length) {
         if (userDate[5] === userDate[6]) {

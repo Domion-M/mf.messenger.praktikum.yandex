@@ -100,14 +100,18 @@ function logDateUser(e: Event) {
     const userDate: string[] = [];
     const inputFocusBlur: NodeListOf<Element> = document.querySelectorAll('.login-and-signin-form__entry input');
     inputFocusBlur.forEach(el => {
-        if ((<HTMLInputElement>el).value.trim() === '') {
-            (<HTMLInputElement>el).focus()
-        } else {
+        const listClass = el.classList[1]
+        if (listClass === 'active') {
             userDate.push((<HTMLInputElement>el).value);
         }
+        else {
+            (<HTMLInputElement>el).focus();
+        }
     });
-    const user = new UserAuth(userDate[0], userDate[1]);
-    console.log(user);
+    if (userDate.length === inputFocusBlur.length) {
+        const user = new UserAuth(userDate[0], userDate[1]);
+        console.log(user);
+    }
 };
 
 render('.btn-container', buttonAuth);

@@ -191,14 +191,13 @@ function logDateUser(e) {
     const inputFocusBlur = document.querySelectorAll('.login-and-signin-form__entry input');
     const userDate = [];
     inputFocusBlur.forEach(el => {
-        if (el.value.trim() === '') {
-            el.focus();
-            return;
-        }
-        else {
+        const listClass = el.classList[1];
+        if (listClass === 'active') {
             userDate.push(el.value);
         }
-        ;
+        else {
+            el.focus();
+        }
     });
     if (userDate.length === inputFocusBlur.length) {
         if (userDate[5] === userDate[6]) {

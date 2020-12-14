@@ -41,7 +41,10 @@
     color: #3369f3;
     font-size: 13px;
   }
-  .login-and-signin-form__entry__placeholder.error {
-    color: red;
+  .login-and-signin-form__entry .error {
+    border-bottom: 1px solid red;
+  }
+  .login-and-signin-form__entry .active{
+    border-bottom:1px solid green;
   }
   

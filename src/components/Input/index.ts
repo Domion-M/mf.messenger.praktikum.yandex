@@ -36,13 +36,14 @@ class Input extends Block {
     validation() {
         const value = this.content().children[0].value
         const result = !!value.match(this.REG_EXP_LOGIN);
-        console.log(this.props, 'tutut');
         if (result) {
+            console.log(this);
             this.setProps({
                 infoElement: {
                     input: {
                         value: value,
                         error: false,
+                        active: 'active',
                     },
                 },
             });
@@ -52,6 +53,7 @@ class Input extends Block {
                     input: {
                         value: value,
                         error: true,
+                        active: 'error'
                     },
                 },
             });
@@ -67,6 +69,7 @@ class Input extends Block {
                     input: {
                         value: value,
                         error: false,
+                        active: 'active',
                     },
                 },
             });
@@ -76,6 +79,7 @@ class Input extends Block {
                     input: {
                         value: value,
                         error: true,
+                        active: 'error'
                     },
                 },
             });
@@ -90,7 +94,8 @@ class Input extends Block {
                 infoElement: {
                     input: {
                         value: value,
-                        error: false
+                        error: false,
+                        active: 'active',
                     }
                 }
             })
@@ -99,7 +104,8 @@ class Input extends Block {
                 infoElement: {
                     input: {
                         value: value,
-                        error: true
+                        error: true,
+                        active: 'error',
                     },
                 },
             });
@@ -114,7 +120,8 @@ class Input extends Block {
                 infoElement: {
                     input: {
                         value: value,
-                        error: false
+                        error: false,
+                        active: 'active',
                     }
                 }
             })
@@ -123,7 +130,8 @@ class Input extends Block {
                 infoElement: {
                     input: {
                         value: value,
-                        error: true
+                        error: true,
+                        active: 'error'
                     },
                 },
             });
