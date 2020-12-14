@@ -17,10 +17,10 @@
     "noImplicitAny": true,
     "alwaysStrict": false,
     "strictNullChecks": true,
+    "outDir": "dist"
   },
   "include": [
-    "static/**/*",
-    "index.ts"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules"
