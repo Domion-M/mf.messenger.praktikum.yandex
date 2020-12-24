@@ -4,25 +4,18 @@ export const tpl = `
 <div class="window-chat">
     <aside class="window-chat__select">
         <div class="window-chat__select__head">
-            <div class="profile-wrap"></div>
+            <div class="profile-wrap">
+            </div>
             <div class="search"><input type="text">
                 <span>Поиск</span>
             </div>
         </div>
+        <div class="add-chat-wrap">
+        
+        </div>
+       
         <ul class="window-chat__select__list-chat">
-        {{#each userchats}}
-            <li class="{{className}}">
-                <div class="img"><span class="img-chat"></span></div>
-                <div class="info">
-                    <p class="name-chat">{{nameChat}}</p>
-                    <span class="last-message">{{lastMessage}}</span>
-                </div>
-                <time class="date">{{time}}</time>
-                {{#if newMessage}}
-                <div class="alert-message">{{newMessage}}</div>
-                {{/if}}
-            </li>
-           {{/each}}
+        
         </ul>
     </aside>
     <div class="window-chat__message">
@@ -30,16 +23,18 @@ export const tpl = `
             <nav class="window-chat__message__head-chat">
                 <div class="chat-img"><span></span> Test</div>                
             </nav>
+            
             <div class="window-chat__message__wrap__modal-menu">
-                <div class="menu-list-action">
-                    <div></div><span>Добавить пользователя</span>
+                <div class="menu-list-action add-user">
+                    <div class="icon-chat"></div>
                 </div>
-                <div class="menu-list-action">
-                    <div class="menu-list-action__delete"></div><span>Удалить пользователя</span>
+                <div class="menu-list-action delete-user">
+                    <div class="icon-chat menu-list-action__delete"></div>
                 </div>
-                <div class="menu-list-action">
-                    <div class="menu-list-action__delete delete"></div><span>Удалить чат</span>
+                <div class="menu-list-action delete-chat">
+                    <div class="icon-chat menu-list-action__delete delete"></div>
                 </div>
+                
             </div>
             <div class="window-chat__message__body-chat">
                 <div class="compamion-message">
@@ -57,7 +52,7 @@ export const tpl = `
             </div>
             <form action="/" method="POST">
                 <div class="window-chat__message__send-message">
-                    <div class="load-file"><img src="./img/clip.png" alt="clip"></div>
+                    <div class="load-file"><img src="./image/clip.png" alt="clip"></div>
                     <div class="send-mail"></div>                    
                 </div>
             </form>

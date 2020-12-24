@@ -1,4 +1,3 @@
-import Handlebars from 'handlebars';
 import Block from '../../utils/Block/index.js';
 import { tpl } from './template.js';
 
@@ -10,7 +9,7 @@ type modalProps = {
         }
     },
     className?: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 class Modal extends Block {

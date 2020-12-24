@@ -2,35 +2,51 @@
     max-width: 510px;
     width: 100%;
   }
+.change-avatar-user{
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #3369f3;
+  border: 1px solid #3369f3;
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 5px;
+}
+.change-avatar-user:hover{
+  color: #fff;
+  background: #3369f3;
+}
   .user-profile__avatar {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+
   .user-profile__avatar > div {
     width: 130px;
     height: 130px;
     background: #efefef;
     border-radius: 50%;
     margin-bottom: 10px;
-    cursor: pointer;
     overflow: hidden;
-  }
-  .user-profile__data-profile__hover {
-    width: 100%;
-    height: 100%;
-    display: none;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    border: 1px solid #eeee;
+    display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
-    padding: 20px;
   }
-  .user-profile__avatar > div:hover .user-profile__data-profile__hover {
+
+  .user-profile__data-profile-wrap{
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
+  .foto-user{
+    width: auto;
+    height: 100%;
+  }
+
   .user-profile__data-profile__list {
     display: flex;
     justify-content: space-between;
@@ -39,13 +55,16 @@
     border-bottom: 1px solid #eaeaea;
     font-size: 13px;
   }
+
   .chenge-data-user input,
   .chenge-data-user {
     color: #999999;
   }
+
   .chenge-data-user input {
     text-align: end;
   }
+
   .user-profile__action {
     margin-top: 100px;
     font-size: 13px;
@@ -53,7 +72,13 @@
   .user-profile__action__btn {
     color: #3369f3;
   }
+
   .user-profile__action__exit-profile {
     color: #ff0000;
+  }
+  .change-password-action h3{
+    margin-bottom: 40px;
+    border-bottom: 1px solid #3369f3;
+    padding-bottom: 3px;
   }
   

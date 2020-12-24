@@ -1,4 +1,3 @@
-import Handlebars from 'handlebars';
 import Block from '../../utils/Block/index.js';
 import { tpl } from './template.js';
 

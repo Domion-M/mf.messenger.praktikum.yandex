@@ -1,10 +1,12 @@
-import Handlebars from 'handlebars';
+import { router } from './../../index.js';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import InputWrapper from '../../components/InputWrapper/index.js';
 import { pageInfoType } from '../../types/index';
 import { tpl } from './template.js';
 import Input from '../../components/Input/index.js';
+import Block from '../../utils/Block/index.js';
+import { AuthService } from '../../services/index.js';
 
 const pageInfo: pageInfoType = {
     page: {
@@ -12,9 +14,7 @@ const pageInfo: pageInfoType = {
     },
 };
 
-const root: HTMLElement | null = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-if (root) root.innerHTML = template(pageInfo);
 
 const buttonAuth = new Button({
     infoElement: {
@@ -38,7 +38,7 @@ const buttonInfo = new Button({
             text: 'Войти',
         },
     },
-    onClick: () => document.location.href = '../login/',
+    onClick: () => router.go('/auth'),
 });
 
 const inputWrapper = new InputWrapper({
@@ -187,16 +187,7 @@ const inputPasswordToo = new Input({
     onBlur: validationPasswordToo,
 });
 
-render('.btn-container', buttonAuth);
-render('.btn-container', buttonInfo);
-render('.input-container', inputWrapper);
-render('.email-enter', inputEmail);
-render('.login-enter', inputlogin);
-render('.first-name-enter', inputName);
-render('.second-name-enter', inputSecondName);
-render('.phone-enter', inputPhone);
-render('.password-enter', inputPassword);
-render('.password-too-enter', inputPasswordToo);
+
 
 class UserSignin {
     constructor(
@@ -231,7 +222,7 @@ function logDateUser(e: Event) {
     if (userDate.length === inputFocusBlur.length) {
         if (userDate[5] === userDate[6]) {
             const user = new UserSignin(userDate[0], userDate[1], userDate[2], userDate[3], userDate[4], userDate[5]);
-            console.log(user);
+            AuthService.singUp(user)
         }
         else {
             (<HTMLInputElement>inputFocusBlur[6]).focus();
@@ -323,3 +314,21 @@ function validationPasswordToo(e: Event) {
         inputPasswordToo.validPassword();
     };
 };
+
+export class Signin extends Block {
+    render() {
+        return template(pageInfo);
+    }
+    getComponent() {
+        render('.btn-container', buttonAuth);
+        render('.btn-container', buttonInfo);
+        render('.input-container', inputWrapper);
+        render('.email-enter', inputEmail);
+        render('.login-enter', inputlogin);
+        render('.first-name-enter', inputName);
+        render('.second-name-enter', inputSecondName);
+        render('.phone-enter', inputPhone);
+        render('.password-enter', inputPassword);
+        render('.password-too-enter', inputPasswordToo);
+    }
+}

@@ -15,6 +15,9 @@
   a {
     text-decoration: none;
   }
+  ul{
+    list-style: none;
+  }
   input {
     border: none;
     width: 100%;

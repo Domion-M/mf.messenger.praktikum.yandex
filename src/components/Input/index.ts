@@ -1,21 +1,6 @@
-import Handlebars from 'handlebars';
+import { inputPropsType } from '../../types/index.js';
 import Block from '../../utils/Block/index.js';
 import { tpl } from './template.js';
-
-type inputPropsType = {
-    infoElement: {
-        input: {
-            type?: string;
-            name?: string;
-            error?: boolean;
-            value?: string;
-        },
-    },
-    onFocus?: Function,
-    onBlur?: Function,
-    onClick?: Function,
-    onMouseEnter?: Function
-}
 
 class Input extends Block {
 
@@ -34,14 +19,15 @@ class Input extends Block {
     };
 
     validation() {
-        const value = this.content().children[0].value
-        const result = !!value.match(this.REG_EXP_LOGIN);
+        const element = this.getElement()
+        const result = !!element.value.match(this.REG_EXP_LOGIN);
         if (result) {
-            console.log(this);
             this.setProps({
                 infoElement: {
                     input: {
-                        value: value,
+                        name: element.name,
+                        type: 'text',
+                        value: element.value,
                         error: false,
                         active: 'active',
                     },
@@ -51,7 +37,9 @@ class Input extends Block {
             this.setProps({
                 infoElement: {
                     input: {
-                        value: value,
+                        name: element.name,
+                        type: 'text',
+                        value: element.value,
                         error: true,
                         active: 'error'
                     },
@@ -61,24 +49,29 @@ class Input extends Block {
     };
 
     validPassword() {
-        const value = this.content().children[0].value
-        const result = !!value.match(this.REG_EXP_PASSWORD);
+        const element = this.getElement()
+        const result = !!element.value.match(this.REG_EXP_PASSWORD);
         if (result) {
             this.setProps({
                 infoElement: {
                     input: {
-                        value: value,
+                        name: element.name,
+                        value: element.value,
                         error: false,
+                        type: 'password',
                         active: 'active',
                     },
                 },
             });
         } else {
             this.setProps({
+                ...this.props,
                 infoElement: {
                     input: {
-                        value: value,
+                        name: element.name,
+                        value: element.value,
                         error: true,
+                        type: 'password',
                         active: 'error'
                     },
                 },
@@ -87,13 +80,15 @@ class Input extends Block {
     };
 
     validEmail() {
-        const value = this.content().children[0].value
-        const result = !!value.match(this.REG_EXP_EMAIL);
+        const element = this.getElement()
+        const result = !!element.value.match(this.REG_EXP_EMAIL);
         if (result) {
             this.setProps({
                 infoElement: {
                     input: {
-                        value: value,
+                        name: element.name,
+                        type: 'text',
+                        value: element.value,
                         error: false,
                         active: 'active',
                     }
@@ -103,7 +98,9 @@ class Input extends Block {
             this.setProps({
                 infoElement: {
                     input: {
-                        value: value,
+                        name: element.name,
+                        type: 'text',
+                        value: element.value,
                         error: true,
                         active: 'error',
                     },
@@ -113,13 +110,15 @@ class Input extends Block {
     };
 
     validPhone() {
-        const value = this.content().children[0].value
-        const result = !!value.match(this.REG_EXP_PHONE);
+        const element = this.getElement()
+        const result = !!element.value.match(this.REG_EXP_PHONE);
         if (result) {
             this.setProps({
                 infoElement: {
                     input: {
-                        value: value,
+                        name: element.name,
+                        type: 'text',
+                        value: element.value,
                         error: false,
                         active: 'active',
                     }
@@ -129,7 +128,9 @@ class Input extends Block {
             this.setProps({
                 infoElement: {
                     input: {
-                        value: value,
+                        name: element.name,
+                        type: 'text',
+                        value: element.value,
                         error: true,
                         active: 'error'
                     },
@@ -137,6 +138,12 @@ class Input extends Block {
             });
         };
     };
+    getValue() {
+        return this.content().children[0].value
+    }
+    getElement() {
+        return this.content().children[0]
+    }
 
 };
 

@@ -1,13 +1,12 @@
-import Handlebars from 'handlebars';
+import { router } from './../../index.js';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import InputWrapper from '../../components/InputWrapper/index.js';
 import { pageInfoType } from '../../types/index';
 import Input from '../../components/Input/index.js';
 import { tpl } from './tamplate.js';
-
-
-
+import Block from '../../utils/Block/index.js';
+import { AuthService } from '../../services/index.js';
 
 const pageInfo: pageInfoType = {
     page: {
@@ -15,9 +14,7 @@ const pageInfo: pageInfoType = {
     },
 };
 
-const root: HTMLElement | null = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-if (root) root.innerHTML = template(pageInfo);
 
 const buttonAuth = new Button({
     infoElement: {
@@ -40,7 +37,7 @@ const buttonInfo = new Button({
             text: 'Нет аккаунта?',
         }
     },
-    onClick: () => document.location.href = '../signin/',
+    onClick: () => router.go('/signin'),
 });
 const input = new Input({
     infoElement: {
@@ -99,26 +96,24 @@ function logDateUser(e: Event) {
     e.preventDefault();
     const userDate: string[] = [];
     const inputFocusBlur: NodeListOf<Element> = document.querySelectorAll('.login-and-signin-form__entry input');
-    inputFocusBlur.forEach(el => {
+    inputFocusBlur.forEach((el: HTMLInputElement) => {
         const listClass = el.classList[1]
         if (listClass === 'active') {
-            userDate.push((<HTMLInputElement>el).value);
+            userDate.push(el.value);
         }
         else {
-            (<HTMLInputElement>el).focus();
+            el.focus();
         }
     });
     if (userDate.length === inputFocusBlur.length) {
         const user = new UserAuth(userDate[0], userDate[1]);
-        console.log(user);
+        AuthService.signIn(user).then((res: XMLHttpRequest) => {
+            if (res.status === 200) {
+                router.go('/');
+            }
+        })
     }
 };
-
-render('.btn-container', buttonAuth);
-render('.btn-container', buttonInfo);
-render('.input-container', inputWrap);
-render('.login-enter', input);
-render('.password-enter', inputPass);
 
 function validLogin(e: Event) {
     const inputPlaceholder = this.parentElement.parentElement;
@@ -143,3 +138,15 @@ function validPassword(e: Event) {
         inputPass.validPassword();
     };
 };
+export class Login extends Block {
+    render() {
+        return template(pageInfo);
+    }
+    getComponent() {
+        render('.btn-container', buttonAuth);
+        render('.btn-container', buttonInfo);
+        render('.input-container', inputWrap);
+        render('.login-enter', input);
+        render('.password-enter', inputPass);
+    }
+}

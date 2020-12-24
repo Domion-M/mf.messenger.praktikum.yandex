@@ -1,18 +1,19 @@
-import Handlebars from 'handlebars';
+import { router } from './../../index.js';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
-import { pageInfoType } from '../../types/index';
+import { pageInfoType } from '../../types/index.js';
 import { tpl } from './template.js';
+import Block from '../../utils/Block/index.js';
+import { AuthService } from '../../services/index.js';
+import UserData from '../../components/FormDataUser/index.js';
 
-const pageInfo: pageInfoType = {
+const infoElement: pageInfoType = {
     page: {
         title: 'Профиль',
     },
 };
 
-const root: HTMLElement | null = document.getElementById('root');
-const template = Handlebars.compile(tpl);
-if (root) root.innerHTML = template(pageInfo);
+
 
 const changeData = new Button({
     className: "user-profile__data-profile__list",
@@ -24,7 +25,7 @@ const changeData = new Button({
             text: 'Изменить данные',
         }
     },
-    onClick: () => document.location.href = '../changeProfile',
+    onClick: () => router.go('/changeprofile'),
 });
 
 const changePassword = new Button({
@@ -37,7 +38,7 @@ const changePassword = new Button({
             text: 'Изменить пароль',
         }
     },
-    onClick: () => document.location.href = '../changePassword',
+    onClick: () => router.go('/changepassword'),
 });
 
 const exitBtn = new Button({
@@ -50,7 +51,7 @@ const exitBtn = new Button({
             text: 'Выйти',
         }
     },
-    onClick: () => document.location.href = '../login',
+    onClick: exitChat,
 });
 
 const returnBtn = new Button({
@@ -61,10 +62,44 @@ const returnBtn = new Button({
             className: 'return-page__return-btn',
         }
     },
-    onClick: () => window.history.go(-1),
+    onClick: () => router.back(),
 });
 
-render('.user-profile__action', changeData);
-render('.user-profile__action', changePassword);
-render('.user-profile__action', exitBtn);
-render('.return-page', returnBtn);
+const userData = new UserData({
+    infoElement: {
+        user:
+        {
+            first_name: "",
+            second_name: '',
+            display_name: '',
+            email: '',
+            phone: '',
+            login: ''
+
+        }
+    },
+})
+
+function exitChat() {
+    AuthService.signOut().then((res: XMLHttpRequest) => {
+        if (res.status === 200) {
+            router.go('/auth')
+        }
+    })
+}
+
+
+export class Profile extends Block {
+    render() {
+        const template = Handlebars.compile(tpl);
+        return template(infoElement);
+    }
+    getComponent() {
+        render('.user-profile-data', userData);
+        render('.user-profile__action', changeData);
+        render('.user-profile__action', changePassword);
+        render('.user-profile__action', exitBtn);
+        render('.return-page', returnBtn);
+        userData.getUserData()
+    }
+}

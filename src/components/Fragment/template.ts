@@ -1,3 +1,3 @@
 export const tpl = `{{#with fragment}}
-<span>{{text}}</span>
+<span class="{{className}}">{{text}}</span>
 {{/with}}`;

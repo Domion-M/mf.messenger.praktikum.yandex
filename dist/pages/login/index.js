@@ -1,17 +1,17 @@
+import { router } from './../../index.js';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import InputWrapper from '../../components/InputWrapper/index.js';
 import Input from '../../components/Input/index.js';
 import { tpl } from './tamplate.js';
+import Block from '../../utils/Block/index.js';
+import { AuthService } from '../../services/index.js';
 const pageInfo = {
     page: {
         title: 'Вход',
     },
 };
-const root = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-if (root)
-    root.innerHTML = template(pageInfo);
 const buttonAuth = new Button({
     infoElement: {
         button: {
@@ -31,7 +31,7 @@ const buttonInfo = new Button({
             text: 'Нет аккаунта?',
         }
     },
-    onClick: () => document.location.href = '../signin/',
+    onClick: () => router.go('/signin'),
 });
 const input = new Input({
     infoElement: {
@@ -87,7 +87,7 @@ function logDateUser(e) {
     e.preventDefault();
     const userDate = [];
     const inputFocusBlur = document.querySelectorAll('.login-and-signin-form__entry input');
-    inputFocusBlur.forEach(el => {
+    inputFocusBlur.forEach((el) => {
         const listClass = el.classList[1];
         if (listClass === 'active') {
             userDate.push(el.value);
@@ -98,15 +98,14 @@ function logDateUser(e) {
     });
     if (userDate.length === inputFocusBlur.length) {
         const user = new UserAuth(userDate[0], userDate[1]);
-        console.log(user);
+        AuthService.signIn(user).then((res) => {
+            if (res.status === 200) {
+                router.go('/');
+            }
+        });
     }
 }
 ;
-render('.btn-container', buttonAuth);
-render('.btn-container', buttonInfo);
-render('.input-container', inputWrap);
-render('.login-enter', input);
-render('.password-enter', inputPass);
 function validLogin(e) {
     const inputPlaceholder = this.parentElement.parentElement;
     if (e.type === 'focus') {
@@ -137,4 +136,16 @@ function validPassword(e) {
     ;
 }
 ;
+export class Login extends Block {
+    render() {
+        return template(pageInfo);
+    }
+    getComponent() {
+        render('.btn-container', buttonAuth);
+        render('.btn-container', buttonInfo);
+        render('.input-container', inputWrap);
+        render('.login-enter', input);
+        render('.password-enter', inputPass);
+    }
+}
 //# sourceMappingURL=index.js.map

@@ -1,8 +1,10 @@
-import Handlebars from 'handlebars';
+import { router } from './../../index.js';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import { pageInfoType } from '../../types/index';
 import { tpl } from './template.js';
+import Block from '../../utils/Block/index.js';
+import ChangePasswordUser from '../../components/FormChangePassword/index.js';
 
 
 const pageInfo: pageInfoType = {
@@ -11,11 +13,7 @@ const pageInfo: pageInfoType = {
     }
 };
 
-const root: HTMLElement | null = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-if (root) {
-    root.innerHTML = template(pageInfo);
-}
 
 const buttonSave = new Button({
     infoElement: {
@@ -38,24 +36,21 @@ const returnBtn = new Button({
             className: 'return-page__return-btn',
         }
     },
-    onClick: () => window.history.go(-1),
+    onClick: () => router.back(),
 });
-
-render('.user-profile__action', buttonSave);
-render('.return-page', returnBtn);
 
 class UserData {
     constructor(
-        public old_password: string,
-        public new_password: string,
-        public new_password_too: string) {
-        this.old_password = old_password;
-        this.new_password = new_password;
-        this.new_password_too = new_password_too;
+        public oldPassword: string,
+        public newPassword: string,
+        public newPasswordToo: string) {
+        this.oldPassword = oldPassword;
+        this.newPassword = newPassword;
+        this.newPasswordToo = newPasswordToo;
     };
 
     checkPass() {
-        if (this.new_password === this.new_password_too) {
+        if (this.newPassword === this.newPasswordToo) {
             return true;
         } else {
             return false;
@@ -75,8 +70,33 @@ function saveNewPassword(e: Event) {
         }
         if (password.length === newPassword.length) {
             const passwordNew = new UserData(password[0], password[1], password[2])
-            console.log(passwordNew);
-            console.log(passwordNew.checkPass());
+            if (passwordNew.checkPass()) {
+                changePasswordForm.changeUserPassword({
+                    oldPassword: passwordNew.oldPassword,
+                    newPassword: passwordNew.newPassword
+                })
+            }
         };
     });
+};
+
+const changePasswordForm = new ChangePasswordUser({
+    infoElement: {
+        user: {
+            oldPassword: '',
+            newPassword: '',
+            newPasswordToo: ''
+        }
+    }
+});
+
+export class ChangePassword extends Block {
+    render() {
+        return template(pageInfo);
+    }
+    getComponent() {
+        render('.user-profile__action', buttonSave);
+        render('.return-page', returnBtn);
+        render('.change-password-action', changePasswordForm);
+    }
 };

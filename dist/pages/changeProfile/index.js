@@ -1,17 +1,17 @@
+import { router } from './../../index.js';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import Modal from '../../components/Modal/index.js';
 import Fragment from '../../components/Fragment/index.js';
 import { tpl } from './tempalte.js';
+import Block from '../../utils/Block/index.js';
+import ChangeDateUser from '../../components/FormChangeUserData/index.js';
 const pageInfo = {
     page: {
         title: 'Вход',
     }
 };
-const root = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-if (root)
-    root.innerHTML = template(pageInfo);
 const buttonSave = new Button({
     infoElement: {
         button: {
@@ -23,6 +23,28 @@ const buttonSave = new Button({
     },
     onClick: saveDataUser,
 });
+const buttonModal = new Button({
+    infoElement: {
+        button: {
+            type: 'submit',
+            className: 'general-btn log-array save-data',
+            id: 'avatar',
+            text: 'Поменять',
+        },
+    },
+    onClick: changeAvatarUser,
+});
+const buttonModalClose = new Button({
+    infoElement: {
+        button: {
+            type: 'button',
+            className: 'close-modal-btn',
+            id: 'close',
+            text: 'X',
+        },
+    },
+    onClick: closeChengeAvatarModal,
+});
 const returnBtn = new Button({
     infoElement: {
         button: {
@@ -30,7 +52,7 @@ const returnBtn = new Button({
             className: 'return-page__return-btn',
         }
     },
-    onClick: () => window.history.go(-1)
+    onClick: () => router.back(),
 });
 const modal = new Modal({
     className: "change-avatar",
@@ -39,11 +61,10 @@ const modal = new Modal({
             title: 'Загрузите файл',
             name: 'avatar'
         },
-    },
-    onClick: closeChengeAvatarModal,
+    }
 });
 const fragAvatarmodal = new Fragment({
-    className: "user-profile__data-profile__hover",
+    className: "change-avatar-user",
     infoElement: {
         fragment: {
             text: "Поменять аватар"
@@ -51,22 +72,14 @@ const fragAvatarmodal = new Fragment({
     },
     onClick: openChengeAvatarModal,
 });
-render('.user-profile__action', buttonSave);
-render('.return-page', returnBtn);
-render('.user-profile__data-profile', fragAvatarmodal);
-render('main', modal);
-const dotClickModalWindow = document.querySelector('.change-avatar__window-change-avatar');
-const modalWindow = document.querySelector('.change-avatar ');
-if (dotClickModalWindow)
-    dotClickModalWindow.addEventListener('click', e => e.stopPropagation());
 class UserData {
-    constructor(email, login, first_name, second_name, phone, display_name) {
+    constructor(email, login, first_name, second_name, display_name, phone) {
         this.email = email;
         this.login = login;
         this.first_name = first_name;
         this.second_name = second_name;
-        this.phone = phone;
         this.display_name = display_name;
+        this.phone = phone;
         this.login = login;
         this.display_name = display_name;
         this.email = email;
@@ -78,10 +91,12 @@ class UserData {
 }
 ;
 function openChengeAvatarModal() {
+    const modalWindow = document.querySelector('.change-avatar ');
     modalWindow.style.display = 'flex';
 }
 ;
 function closeChengeAvatarModal() {
+    const modalWindow = document.querySelector('.change-avatar ');
     modalWindow.style.display = 'none';
 }
 ;
@@ -98,10 +113,57 @@ function saveDataUser(e) {
         }
         if (userNewData.length === valueInputChange.length) {
             const newDataUser = new UserData(userNewData[0], userNewData[1], userNewData[2], userNewData[3], userNewData[4], userNewData[5]);
-            console.log(newDataUser);
+            changeDataUser.changeUserProfile(newDataUser);
         }
         ;
     });
+}
+;
+function changeAvatarUser(e) {
+    e.preventDefault();
+    const form = document.querySelector('#input__file');
+    const label = document.querySelector('.input_file_btn span');
+    const val = form.value;
+    if (val.trim() != '') {
+        const title = form.parentNode.previousElementSibling;
+        title.textContent = 'Файл загружен';
+        const nameFile = val.slice(12);
+        if (label)
+            label.textContent = nameFile;
+        const avatar = { avatar: form.value };
+        changeDataUser.changeUserAvatar(avatar);
+    }
+    ;
+}
+;
+const changeDataUser = new ChangeDateUser({
+    infoElement: {
+        user: {
+            first_name: '',
+            second_name: '',
+            display_name: '',
+            email: '',
+            phone: '',
+            login: ''
+        }
+    }
+});
+export class ChangeProfile extends Block {
+    render() {
+        return template(pageInfo);
+    }
+    ;
+    getComponent() {
+        render('.user-avatar_action', fragAvatarmodal);
+        render('.user-data_action', changeDataUser);
+        render('.user-profile__action', buttonSave);
+        render('.return-page', returnBtn);
+        render('main', modal);
+        render('.change-avatar__window-change-avatar', buttonModal);
+        render('.change-avatar__window-change-avatar', buttonModalClose);
+        changeDataUser.getUserData();
+    }
+    ;
 }
 ;
 //# sourceMappingURL=index.js.map

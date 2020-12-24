@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 import { tpl } from '../../templates/templatePageError.js';
 import { pageInfoType } from '../../types/index';
+import Block from '../../utils/Block/index.js';
 
 const pageInfo: pageInfoType = {
     "page":
@@ -11,8 +12,10 @@ const pageInfo: pageInfoType = {
     },
 };
 
-const root: Element | null = document.getElementById('root');
 const template = Handlebars.compile(tpl);
-if (root) {
-    root.innerHTML = template(pageInfo);
+
+export class Error extends Block {
+    render() {
+        return template(pageInfo);
+    }
 }

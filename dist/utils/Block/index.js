@@ -80,7 +80,7 @@ class Block {
     }
     ;
     componentDidUpdate(oldProps, newProps) {
-        console.log(oldProps, newProps);
+        console.log(oldProps, 'oldProps', newProps, 'newProps');
         return true;
     }
     ;
@@ -95,7 +95,7 @@ class Block {
         element.forEach((el) => {
             if (el.includes('on')) {
                 const act = el.slice(2).toLocaleLowerCase();
-                this.content().children[0].addEventListener(`${act}`, this.props[el]);
+                this.content().addEventListener(`${act}`, this.props[el]);
             }
             ;
         });
@@ -108,7 +108,7 @@ class Block {
     }
     ;
     hide() {
-        this.content().style.display = "none";
+        this.content().remove();
     }
     ;
 }
