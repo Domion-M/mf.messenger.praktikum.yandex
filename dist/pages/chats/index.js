@@ -10,6 +10,7 @@ import ModalAddUserChat from '../../components/ModalUserChat/index.js';
 import { ChatsService, UsersService } from '../../services/index.js';
 import UserList from '../../components/ModalUserChat/ListUserOnline/index.js';
 import DeleteUserToChat from '../../components/ModalUserChat/ListUserToChat/index.js';
+export const listDeleteUser = new DeleteUserToChat({});
 export const chatsList = new ChatsList({
     infoElement: {
         userchats: []
@@ -108,7 +109,6 @@ const modalDeleteUser = new ModalAddUserChat({
     className: 'modal-delete-user-chat',
     infoElement: {}
 });
-export const listDeleteUser = new DeleteUserToChat({});
 const inputAddUsers = new Input({
     infoElement: {
         input: {
@@ -132,21 +132,31 @@ function getUserOnline(e) {
     });
 }
 function headleAddUserChat() {
-    modalAddUser.openAndCloose();
+    modalAddUser.openAndClose();
+    if (modalDeleteUser.open) {
+        modalDeleteUser.openAndClose();
+    }
 }
 function headleDeleteUserChat() {
-    modalDeleteUser.openAndCloose();
+    modalDeleteUser.openAndClose();
+    if (modalAddUser.open) {
+        modalAddUser.openAndClose();
+    }
     const data = chatsList.state.idChat;
     ChatsService.getChatOnUsers(data).then((res) => {
-        console.log(JSON.parse(res.response));
         listDeleteUser.reRender(JSON.parse(res.response));
     });
 }
 function openModalMenu() {
-    this.classList.toggle('active');
-    const modalMenu = document.querySelector('.window-chat__message__wrap__modal-menu');
-    if (modalMenu)
-        modalMenu.classList.toggle('display');
+    if (chatsList.state.idChat) {
+        this.classList.toggle('active');
+        const modalMenu = document.querySelector('.window-chat__message__wrap__modal-menu');
+        if (modalMenu)
+            modalMenu.classList.toggle('display');
+    }
+    else {
+        alert('Выбирите чат!');
+    }
 }
 ;
 function addNewChat() {

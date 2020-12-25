@@ -121,19 +121,21 @@ function saveDataUser(e) {
 ;
 function changeAvatarUser(e) {
     e.preventDefault();
-    const form = document.querySelector('#input__file');
     const label = document.querySelector('.input_file_btn span');
-    const val = form.value;
-    if (val.trim() != '') {
-        const title = form.parentNode.previousElementSibling;
-        title.textContent = 'Файл загружен';
-        const nameFile = val.slice(12);
-        if (label)
+    const input = document.querySelector('#input__file');
+    const form = document.forms.namedItem('avatar-send');
+    const title = document.querySelector('.change-avatar__window-change-avatar h3');
+    if (form && input && title && label) {
+        const val = input.value;
+        if (val.trim() != '') {
+            title.textContent = 'Файл загружен';
+            const nameFile = val.slice(12);
             label.textContent = nameFile;
-        const avatar = { avatar: form.value };
-        changeDataUser.changeUserAvatar(avatar);
+            const formData = new FormData(form);
+            changeDataUser.changeUserAvatar(formData);
+        }
+        ;
     }
-    ;
 }
 ;
 const changeDataUser = new ChangeDateUser({

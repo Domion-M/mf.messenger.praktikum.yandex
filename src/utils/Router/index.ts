@@ -5,7 +5,7 @@ export class Router {
     history: History
     _currentRoute: any | null
     _rootQuery: string
-    static __instance: any;
+    static __instance: Router;
 
     constructor(rootQuery: string) {
         if (Router.__instance) {
@@ -21,7 +21,7 @@ export class Router {
     }
 
     use(pathname: string, block: object) {
-        const route: any = new Route(pathname, block, { rootQuery: this._rootQuery });
+        const route: Route = new Route(pathname, block, { rootQuery: this._rootQuery });
 
         this.routes.push(route);
 

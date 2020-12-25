@@ -35,13 +35,18 @@ class ApiServices {
             xhr.onload = () => {
                 resolve(xhr);
             };
-            xhr.setRequestHeader('Content-Type', 'application/json');
+            if (!(data instanceof FormData)) {
+                xhr.setRequestHeader('Content-Type', 'application/json');
+            }
             xhr.withCredentials = true;
             xhr.timeout = timeout;
             xhr.onerror = reject;
             xhr.ontimeout = reject;
             if (method === 'GET') {
                 xhr.send();
+            }
+            else if (data instanceof FormData) {
+                xhr.send(data);
             }
             else {
                 xhr.send(JSON.stringify(data));

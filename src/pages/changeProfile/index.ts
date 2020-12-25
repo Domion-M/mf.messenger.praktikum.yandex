@@ -133,17 +133,20 @@ function saveDataUser(e: Event) {
 
 function changeAvatarUser(e: Event) {
     e.preventDefault();
-    const form: any = document.querySelector('#input__file');
     const label = document.querySelector('.input_file_btn span');
-    const val = form.value;
-    if (val.trim() != '') {
-        const title = form.parentNode.previousElementSibling;
-        title.textContent = 'Файл загружен';
-        const nameFile = val.slice(12);
-        if (label) label.textContent = nameFile;
-        const avatar = { avatar: form.value };
-        changeDataUser.changeUserAvatar(avatar)
-    };
+    const input = document.querySelector('#input__file');
+    const form = document.forms.namedItem('avatar-send');
+    const title = document.querySelector('.change-avatar__window-change-avatar h3');
+    if (form && input && title && label) {
+        const val = (<HTMLInputElement>input).value;
+        if (val.trim() != '') {
+            title.textContent = 'Файл загружен';
+            const nameFile = val.slice(12);
+            label.textContent = nameFile;
+            const formData = new FormData(form);
+            changeDataUser.changeUserAvatar(formData)
+        };
+    }
 };
 
 const changeDataUser = new ChangeDateUser({

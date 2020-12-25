@@ -30,8 +30,8 @@ class ChangeDateUser extends Block {
             if (res) this.getUserData()
         })
     }
-    changeUserAvatar(avatar: { avatar: string }) {
-        UsersService.changeUserAvatar(avatar).then((res: XMLHttpRequest) => {
+    changeUserAvatar(data: FormData) {
+        UsersService.changeUserAvatar(data).then((res: XMLHttpRequest) => {
             if (res) this.getUserData()
         })
     }

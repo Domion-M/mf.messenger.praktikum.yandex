@@ -28,8 +28,8 @@ class ChangeDateUser extends Block {
                 this.getUserData();
         });
     }
-    changeUserAvatar(avatar) {
-        UsersService.changeUserAvatar(avatar).then((res) => {
+    changeUserAvatar(data) {
+        UsersService.changeUserAvatar(data).then((res) => {
             if (res)
                 this.getUserData();
         });

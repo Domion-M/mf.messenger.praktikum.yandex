@@ -17,7 +17,7 @@ export default class UsersService {
         return this.APIService.put(`user/profile`, { data })
     }
 
-    changeUserAvatar(data: { avatar: string }) {
+    changeUserAvatar(data: FormData) {
         return this.APIService.put('user/profile/avatar', { data })
 
     }

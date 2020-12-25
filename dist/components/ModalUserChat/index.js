@@ -3,6 +3,7 @@ import { tpl } from './template.tpl.js';
 class ModalAddUserChat extends Block {
     constructor(localProps) {
         super("div", localProps);
+        this.open = false;
     }
     ;
     render() {
@@ -11,8 +12,15 @@ class ModalAddUserChat extends Block {
         return template(infoElement);
     }
     ;
-    openAndCloose() {
-        this.content().classList.toggle('display');
+    openAndClose() {
+        if (this.open) {
+            this.content().classList.remove('display');
+            this.open = false;
+        }
+        else {
+            this.content().classList.add('display');
+            this.open = true;
+        }
     }
 }
 ;

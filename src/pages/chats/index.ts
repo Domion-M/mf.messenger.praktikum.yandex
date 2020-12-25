@@ -16,6 +16,8 @@ type ChatsPropsType = {
         title: string;
     }
 }
+
+export const listDeleteUser = new DeleteUserToChat({})
 export const chatsList = new ChatsList({
     infoElement: {
         userchats: []
@@ -134,9 +136,6 @@ const modalDeleteUser = new ModalAddUserChat({
 
     }
 });
-export const listDeleteUser = new DeleteUserToChat({
-
-})
 
 const inputAddUsers = new Input({
     infoElement: {
@@ -164,22 +163,31 @@ function getUserOnline(e: { target: { value: string; }; }) {
 }
 
 function headleAddUserChat() {
-    modalAddUser.openAndCloose()
+    modalAddUser.openAndClose()
+    if (modalDeleteUser.open) {
+        modalDeleteUser.openAndClose()
+    }
 }
 
 function headleDeleteUserChat() {
-    modalDeleteUser.openAndCloose()
+    modalDeleteUser.openAndClose()
+    if (modalAddUser.open) {
+        modalAddUser.openAndClose()
+    }
     const data = chatsList.state.idChat
     ChatsService.getChatOnUsers(data).then((res: XMLHttpRequest) => {
-        console.log(JSON.parse(res.response));
         listDeleteUser.reRender(JSON.parse(res.response))
     })
 }
 
 function openModalMenu(): void {
-    this.classList.toggle('active');
-    const modalMenu: HTMLElement | null = document.querySelector('.window-chat__message__wrap__modal-menu');
-    if (modalMenu) modalMenu.classList.toggle('display');
+    if (chatsList.state.idChat) {
+        this.classList.toggle('active');
+        const modalMenu: HTMLElement | null = document.querySelector('.window-chat__message__wrap__modal-menu');
+        if (modalMenu) modalMenu.classList.toggle('display');
+    } else {
+        alert('Выбирите чат!')
+    }
 };
 
 function addNewChat() {
