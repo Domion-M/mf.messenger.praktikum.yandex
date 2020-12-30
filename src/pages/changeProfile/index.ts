@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { router } from './../../index.js';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';

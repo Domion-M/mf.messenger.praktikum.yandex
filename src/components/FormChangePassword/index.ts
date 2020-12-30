@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { UsersService } from '../../services/index.js';
 import { ChangeUserPasswordType, UserPasswordType } from '../../types/index.js';
 import Block from '../../utils/Block/index.js';

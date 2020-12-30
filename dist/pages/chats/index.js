@@ -46,7 +46,7 @@ const ctnMenuChat = new Fragment({
             text: ''
         },
     },
-    onClick: openModalMenu,
+    inClick: openModalMenu,
 });
 const deleteChat = new Fragment({
     infoElement: {
@@ -72,7 +72,7 @@ const deleteUserChat = new Fragment({
     },
     onClick: headleDeleteUserChat,
 });
-const inputLogin = new Input({
+const inputMessage = new Input({
     infoElement: {
         input: {
             name: 'message',
@@ -160,13 +160,16 @@ function openModalMenu() {
 }
 ;
 function addNewChat() {
-    const value = inputAddChat.getValue();
-    if (value != '' && value.length > 3) {
+    let value = inputAddChat.getValue();
+    if (value != '' && value.length > 4) {
         const chat = { title: value };
         chatsList.createChat(chat);
+        inputAddChat.changeValue();
+    }
+    else {
+        alert("Название чата больше 4 символов");
     }
 }
-const inputMessage = document.querySelector('input[name="message"]');
 class Message {
     constructor(message, date) {
         this.message = message;
@@ -176,18 +179,18 @@ class Message {
 ;
 function sendMailChat(e) {
     e.preventDefault();
-    if (inputMessage.value.trim() !== '') {
+    if (inputMessage.getValue().trim() !== '') {
         const date = new Date();
         const day = date.getDay();
         const minutes = date.getMinutes() < 9 ? `0${date.getMinutes()}` : date.getMinutes();
         const time = `${date.getHours()}:${minutes}`;
-        const userMessage = new Message(inputMessage.value, [time, day]);
-        inputMessage.value = '';
-        inputMessage.focus();
+        const userMessage = new Message(inputMessage.getValue(), [time, day]);
+        inputMessage.changeValue();
+        inputMessage.getElement().focus();
         console.log(userMessage);
     }
     else {
-        inputMessage.focus();
+        inputMessage.getElement().focus();
     }
 }
 ;
@@ -197,8 +200,7 @@ function sendMailKeyboardEnter(e) {
         sendMailChat(e);
     }
 }
-if (inputMessage)
-    inputMessage.addEventListener('keydown', sendMailKeyboardEnter);
+inputMessage.getElement().addEventListener('keydown', sendMailKeyboardEnter);
 export class Chats extends Block {
     render() {
         const template = Handlebars.compile(tpl);
@@ -208,7 +210,7 @@ export class Chats extends Block {
         render('.window-chat__message__send-message', sendMail);
         render('.profile-wrap', btnProfile);
         render('.window-chat__message__head-chat', ctnMenuChat);
-        render('.send-mail', inputLogin);
+        render('.send-mail', inputMessage);
         render('.add-chat-wrap', inputAddChat);
         render('.add-chat-wrap', createNewChat);
         render('.window-chat__select__list-chat', chatsList);

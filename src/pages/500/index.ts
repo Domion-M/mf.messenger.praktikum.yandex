@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { tpl } from '../../templates/templatePageError.js';
 import { pageInfoType } from '../../types/index';
 

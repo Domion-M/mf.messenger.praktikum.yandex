@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { router } from './../../index.js';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
@@ -222,7 +223,11 @@ function logDateUser(e: Event) {
     if (userDate.length === inputFocusBlur.length) {
         if (userDate[5] === userDate[6]) {
             const user = new UserSignin(userDate[0], userDate[1], userDate[2], userDate[3], userDate[4], userDate[5]);
-            AuthService.singUp(user)
+            AuthService.singUp(user).then((res: XMLHttpRequest) => {
+                if (res.status === 200) {
+                    router.go('/');
+                }
+            })
         }
         else {
             (<HTMLInputElement>inputFocusBlur[6]).focus();

@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { ChatsService } from '../../services/index.js';
 import Block from '../../utils/Block/index.js';
 import { tpl } from './template.tpl.js';

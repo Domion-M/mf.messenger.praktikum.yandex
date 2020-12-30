@@ -32,16 +32,20 @@ class ApiServices {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open(method, url);
-            xhr.onload = () => {
+            xhr.addEventListener('load', () => {
                 resolve(xhr);
-            };
+            });
             if (!(data instanceof FormData)) {
                 xhr.setRequestHeader('Content-Type', 'application/json');
             }
             xhr.withCredentials = true;
             xhr.timeout = timeout;
-            xhr.onerror = reject;
-            xhr.ontimeout = reject;
+            xhr.addEventListener('onerror', () => {
+                reject;
+            });
+            xhr.addEventListener('ontimeout', () => {
+                reject;
+            });
             if (method === 'GET') {
                 xhr.send();
             }

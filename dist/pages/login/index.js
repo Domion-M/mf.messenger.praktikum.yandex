@@ -108,6 +108,7 @@ function logDateUser(e) {
 ;
 function validLogin(e) {
     const inputPlaceholder = this.parentElement.parentElement;
+    console.log(inputPlaceholder);
     if (e.type === 'focus') {
         inputPlaceholder.classList.add('animation');
     }

@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { inputPropsType } from '../../types/index.js';
 import Block from '../../utils/Block/index.js';
 import { tpl } from './template.js';
@@ -143,6 +144,18 @@ class Input extends Block {
     }
     getElement() {
         return this.content().children[0]
+    }
+    changeValue(val = '') {
+        const element = this.getElement()
+        console.log(this.props);
+        this.setProps({
+            ...this.props,
+            input: {
+                name: element.name,
+                type: 'text',
+                value: val,
+            },
+        });
     }
 
 };

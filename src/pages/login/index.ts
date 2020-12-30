@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { router } from './../../index.js';
 import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
@@ -117,6 +118,7 @@ function logDateUser(e: Event) {
 
 function validLogin(e: Event) {
     const inputPlaceholder = this.parentElement.parentElement;
+    console.log(inputPlaceholder);
     if (e.type === 'focus') {
         inputPlaceholder.classList.add('animation')
     } else if (e.type === 'blur') {

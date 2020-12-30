@@ -110,12 +110,15 @@ class Block {
         const block = this.render();
         this._element.innerHTML = block
         const element = Object.keys(this.props);
-
         element.forEach((el: string) => {
             if (el.includes('on')) {
                 const act = el.slice(2).toLocaleLowerCase();
-                this.content().addEventListener(`${act}`, this.props[el]);
+                this._element.children[0].addEventListener(`${act}`, this.props[el]);
             };
+            if (el.includes('in')) {
+                const act = el.slice(2).toLocaleLowerCase();
+                this._element.addEventListener(`${act}`, this.props[el]);
+            }
         });
     };
 

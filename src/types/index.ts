@@ -14,7 +14,8 @@ export type fragmentPropsType = {
             className?: string
         },
     },
-    onClick: () => void;
+    onClick?: () => void,
+    inClick?: () => void
 };
 
 export type buttonPropsType = {

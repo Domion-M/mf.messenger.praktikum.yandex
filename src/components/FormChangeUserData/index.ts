@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { userType } from './../../types/index';
 import { UsersService } from '../../services/index.js';
 import { UserDataType } from '../../types/index.js';

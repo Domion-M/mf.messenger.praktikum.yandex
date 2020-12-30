@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { buttonPropsType } from '../../types/index.js';
 import Block from '../../utils/Block/index.js';
 import { tpl } from './template.js';

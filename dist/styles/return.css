@@ -1,40 +1,38 @@
 .return-page {
-    flex: 1 5%;
-    background: #fbfbfb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .return-page__return-btn {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #3369f3;
-    border-radius: 50%;
-  }
-  .return-page__return-btn > span {
-    width: 10px;
-    height: 1px;
-    background: #fff;
-    position: relative;
-  }
-  .return-page__return-btn > span::before,
-  .return-page__return-btn > span::after {
-    content: "";
-    width: 4px;
-    height: 1px;
-    background: #fff;
-    position: absolute;
-    left: 0;
-  }
-  .return-page__return-btn > span::before {
-    top: -2px;
-    transform: rotate(-45deg);
-  }
-  .return-page__return-btn > span::after {
-    bottom: -2px;
-    transform: rotate(45deg);
-  }
-  
+  flex: 1 5%;
+  background: #fbfbfb;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.return-page__return-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3369f3;
+  border-radius: 50%; }
+
+.return-page__return-btn > span {
+  width: 10px;
+  height: 1px;
+  background: #fff;
+  position: relative; }
+
+.return-page__return-btn > span::before,
+.return-page__return-btn > span::after {
+  content: "";
+  width: 4px;
+  height: 1px;
+  background: #fff;
+  position: absolute;
+  left: 0; }
+
+.return-page__return-btn > span::before {
+  top: -2px;
+  transform: rotate(-45deg); }
+
+.return-page__return-btn > span::after {
+  bottom: -2px;
+  transform: rotate(45deg); }

@@ -22,9 +22,8 @@ export
     <div class="window-chat__message">
         <div class="window-chat__message__wrap">
             <nav class="window-chat__message__head-chat">
-                <div class="chat-img"><span></span> Test</div>                
-            </nav>
-            
+                <div class="chat-img"><span></span> Test</div>                                
+            </nav>            
             <div class="window-chat__message__wrap__modal-menu">
                 <div class="menu-list-action add-user">
                     <div class="icon-chat"></div>
@@ -34,8 +33,7 @@ export
                 </div>
                 <div class="menu-list-action delete-chat">
                     <div class="icon-chat menu-list-action__delete delete"></div>
-                </div>
-                
+                </div>                
             </div>
             <div class="window-chat__message__body-chat">
                 <div class="compamion-message">

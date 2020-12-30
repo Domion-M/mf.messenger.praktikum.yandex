@@ -1,5 +1,5 @@
-import { isEqual } from "../isEqual/index.js";
-import { render } from "../Render/index.js";
+import { isEqual } from "../isEqual/";
+import { render } from "../Render/";
 
 export class Route {
     _pathname: string

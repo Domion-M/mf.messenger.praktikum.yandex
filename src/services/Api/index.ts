@@ -1,4 +1,4 @@
-import { queryStringify } from "../../utils/queryStringifyGet/index.js"
+import { queryStringify } from "../../utils/queryStringifyGet"
 
 enum METHODS {
 
@@ -50,9 +50,10 @@ class ApiServices {
             const xhr = new XMLHttpRequest();
             xhr.open(method, url);
 
-            xhr.onload = () => {
+            xhr.addEventListener('load', () => {
                 resolve(xhr);
-            };
+            })
+
             if (!(data instanceof FormData)) {
                 xhr.setRequestHeader('Content-Type', 'application/json');
             }
@@ -60,8 +61,12 @@ class ApiServices {
             xhr.withCredentials = true;
             xhr.timeout = timeout;
 
-            xhr.onerror = reject
-            xhr.ontimeout = reject;
+            xhr.addEventListener('onerror', () => {
+                reject
+            })
+            xhr.addEventListener('ontimeout', () => {
+                reject
+            })
 
             if (method === 'GET') {
                 xhr.send();
