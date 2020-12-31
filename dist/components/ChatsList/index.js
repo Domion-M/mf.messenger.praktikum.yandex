@@ -1,4 +1,5 @@
 import { ChatsService } from '../../services/index.js';
+import { router } from '../../index.js';
 import Block from '../../utils/Block/index.js';
 import { tpl } from './template.tpl.js';
 class ChatsList extends Block {
@@ -27,7 +28,7 @@ class ChatsList extends Block {
                     userchats: data
                 },
             });
-        });
+        }).catch(() => router.go('/auth'));;
     }
     createChat(data) {
         ChatsService.createChats(data).then((res) => {

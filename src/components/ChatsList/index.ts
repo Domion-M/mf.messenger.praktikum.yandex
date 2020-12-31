@@ -1,4 +1,5 @@
 import Handlebars from 'handlebars';
+import { router } from '../../index.js';
 import { ChatsService } from '../../services/index.js';
 import Block from '../../utils/Block/index.js';
 import { tpl } from './template.tpl.js';
@@ -30,9 +31,10 @@ class ChatsList extends Block {
                 infoElement: {
                     userchats: data
                 },
-            })
-        })
-    }
+            });
+        }).catch(() => router.go('/auth'));
+    };
+
     createChat(data: { title: string }) {
         ChatsService.createChats(data).then((res: XMLHttpRequest) => {
             if (res.status === 200) {
