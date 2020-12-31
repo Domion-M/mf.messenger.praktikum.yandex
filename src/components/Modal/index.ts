@@ -24,9 +24,7 @@ class Modal extends Block {
         const template = Handlebars.compile(tpl);
         return template(infoElement);
     };
-    openAndClose() {
-        console.log(this.content());
-    }
+
 };
 
 export default Modal;

@@ -147,7 +147,6 @@ class Input extends Block {
     }
     changeValue(val = '') {
         const element = this.getElement()
-        console.log(this.props);
         this.setProps({
             ...this.props,
             input: {

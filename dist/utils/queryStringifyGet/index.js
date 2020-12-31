@@ -1,14 +1,13 @@
 export function queryStringify(data) {
-    let stringGetRequest = '';
     const arr = Object.entries(data);
-    arr.forEach(([k, v], index) => {
+    return arr.reduce((acc, [k, v], index) => {
         if (index === 0) {
-            stringGetRequest += `?${k}=${v}`;
+            return acc += `?${k}=${v}`;
         }
         else {
-            stringGetRequest += `&${k}=${v}`;
+            return acc += `&${k}=${v}`;
         }
-    });
-    return stringGetRequest;
+    }, '');
 }
+;
 //# sourceMappingURL=index.js.map

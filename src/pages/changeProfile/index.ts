@@ -4,10 +4,11 @@ import { render } from '../../utils/Render/index.js';
 import Button from '../../components/Button/index.js';
 import Modal from '../../components/Modal/index.js';
 import Fragment from '../../components/Fragment/index.js';
-import { pageInfoType } from '../../types/index';
+import { pageInfoType } from '../../types/index.js';
 import { tpl } from './tempalte.js';
 import Block from '../../utils/Block/index.js';
 import ChangeDateUser from '../../components/FormChangeUserData/index.js';
+import ErrorModal from '../../components/ErrorModal/index.js';
 
 const pageInfo: pageInfoType = {
     page: {
@@ -163,7 +164,15 @@ const changeDataUser = new ChangeDateUser({
     }
 });
 
+export const modalErrorProfile = new ErrorModal({
+    className: "error-modal-window",
+    infoElement: {
+        error: {
+            errorMessage: 'Что-то пошло не так'
+        }
 
+    }
+});
 
 export class ChangeProfile extends Block {
     render() {
@@ -177,6 +186,7 @@ export class ChangeProfile extends Block {
         render('main', modal);
         render('.change-avatar__window-change-avatar', buttonModal);
         render('.change-avatar__window-change-avatar', buttonModalClose);
+        render('main', modalErrorProfile);
         changeDataUser.getUserData();
     };
 };

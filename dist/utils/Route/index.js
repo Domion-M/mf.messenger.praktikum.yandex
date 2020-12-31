@@ -1,4 +1,4 @@
-import { isEqual } from "../isEqual/index.js";
+import { isEqualString } from "../isEqualString/index.js";
 import { render } from "../Render/index.js";
 export class Route {
     constructor(pathname, view, props) {
@@ -19,7 +19,7 @@ export class Route {
         }
     }
     match(pathname) {
-        return isEqual(pathname, this._pathname);
+        return isEqualString(pathname, this._pathname);
     }
     render() {
         this._block = new this._blockClass();

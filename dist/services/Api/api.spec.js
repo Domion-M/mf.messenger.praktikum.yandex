@@ -1,14 +1,4 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-import { API_CONFIG } from '../../../config/apiConfig';
-import ApiServices from '../../../services/Api';
+import ApiServices from '.';
 describe('Request server:', () => {
     const xhrMockObj = {
         open: jest.fn(),
@@ -18,7 +8,7 @@ describe('Request server:', () => {
         }),
         setRequestHeader: jest.fn(),
     };
-    let api = new ApiServices(API_CONFIG.BASE_URL);
+    let api = new ApiServices('/');
     const xhrMockClass = () => xhrMockObj;
     //@ts-ignore
     window.XMLHttpRequest = jest.fn().mockImplementation(xhrMockClass);
@@ -28,16 +18,6 @@ describe('Request server:', () => {
         expect(api.put).toBeDefined();
         expect(api.delete).toBeDefined();
     });
-    test('test XMLHttprequst method', () => __awaiter(void 0, void 0, void 0, function* () {
-        yield api.get('/');
-        expect(xhrMockObj.addEventListener).toBeCalledTimes(3);
-        expect(xhrMockObj.addEventListener.mock.calls[0][0]).toEqual('load');
-        expect(xhrMockObj.addEventListener.mock.calls[1][0]).toEqual('onerror');
-        expect(xhrMockObj.addEventListener.mock.calls[2][0]).toEqual('ontimeout');
-        expect(xhrMockObj.addEventListener.mock.calls[0][1]).toBeInstanceOf(Function);
-        expect(xhrMockObj.addEventListener.mock.calls[1][1]).toBeInstanceOf(Function);
-        expect(xhrMockObj.addEventListener.mock.calls[2][1]).toBeInstanceOf(Function);
-    }));
     test("get returns Promise", () => {
         const req = api.get("/");
         expect(req).toBeInstanceOf(Promise);

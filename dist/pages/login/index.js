@@ -6,6 +6,7 @@ import Input from '../../components/Input/index.js';
 import { tpl } from './tamplate.js';
 import Block from '../../utils/Block/index.js';
 import { AuthService } from '../../services/index.js';
+import ErrorModal from '../../components/ErrorModal/index.js';
 const pageInfo = {
     page: {
         title: 'Вход',
@@ -73,6 +74,14 @@ const inputWrap = new InputWrapper({
         ],
     },
 });
+const modalError = new ErrorModal({
+    className: "error-modal-window",
+    infoElement: {
+        error: {
+            errorMessage: 'Неправильный логин или пороль'
+        }
+    }
+});
 class UserAuth {
     constructor(login, password) {
         this.login = login;
@@ -99,37 +108,37 @@ function logDateUser(e) {
     if (userDate.length === inputFocusBlur.length) {
         const user = new UserAuth(userDate[0], userDate[1]);
         AuthService.signIn(user).then((res) => {
-            if (res.status === 200) {
+            if (res.status >= 200 && res.status <= 299) {
                 router.go('/');
             }
-        });
+        }).catch(() => modalError.openAndClose());
     }
 }
 ;
 function validLogin(e) {
-    const inputPlaceholder = this.parentElement.parentElement;
-    console.log(inputPlaceholder);
+    var _a;
+    const inputPlaceholder = (_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.add('animation');
     }
     else if (e.type === 'blur') {
         if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+            inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.remove('animation');
         }
-        ;
         input.validation();
     }
     ;
 }
 ;
 function validPassword(e) {
-    const inputPlaceholder = this.parentElement.parentElement;
+    var _a;
+    const inputPlaceholder = (_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.add('animation');
     }
     else if (e.type === 'blur') {
         if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+            inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.remove('animation');
         }
         ;
         inputPass.validPassword();
@@ -147,6 +156,7 @@ export class Login extends Block {
         render('.input-container', inputWrap);
         render('.login-enter', input);
         render('.password-enter', inputPass);
+        render('main', modalError);
     }
 }
 //# sourceMappingURL=index.js.map

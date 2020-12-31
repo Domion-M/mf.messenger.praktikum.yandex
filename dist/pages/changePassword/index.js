@@ -4,6 +4,7 @@ import Button from '../../components/Button/index.js';
 import { tpl } from './template.js';
 import Block from '../../utils/Block/index.js';
 import ChangePasswordUser from '../../components/FormChangePassword/index.js';
+import ErrorModal from '../../components/ErrorModal/index.js';
 const pageInfo = {
     page: {
         title: 'Смена пороля',
@@ -85,6 +86,14 @@ const changePasswordForm = new ChangePasswordUser({
         }
     }
 });
+export const modalErrorPassword = new ErrorModal({
+    className: "error-modal-window",
+    infoElement: {
+        error: {
+            errorMessage: 'Что-то пошло не так'
+        }
+    }
+});
 export class ChangePassword extends Block {
     render() {
         return template(pageInfo);
@@ -93,6 +102,7 @@ export class ChangePassword extends Block {
         render('.user-profile__action', buttonSave);
         render('.return-page', returnBtn);
         render('.change-password-action', changePasswordForm);
+        render('main', modalErrorPassword);
     }
 }
 ;

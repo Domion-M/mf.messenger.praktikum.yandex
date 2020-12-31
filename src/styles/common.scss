@@ -58,6 +58,18 @@
   .d-flex {
     display: flex;
   }
+  // error-modal 
+  .error-modal-window{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 10px;
+    color: $red-color;
+    padding: 30px 20px;
+    border: 1px solid $red-color;
+    border-radius: 5px;
+    display: none;
+  }
   
   /* active className */
   

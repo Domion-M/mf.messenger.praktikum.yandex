@@ -20,7 +20,7 @@ class ApiServices {
         this.baseUrl = url
     }
 
-    get(url: string, options?: { data?: any }) {
+    get(url: string, options?: { data: object }) {
         let get = ''
         if (options) {
             const { data } = options
@@ -41,7 +41,7 @@ class ApiServices {
         return this.request(this.baseUrl + url, { ...options, method: METHODS.DELETE });
     }
 
-    request(url: string, options: optionsType, timeout = 5000) {
+    request(url: string, options: optionsType, timeout = 5000): Promise<XMLHttpRequest> {
 
         const { method, data } = options;
 
@@ -50,9 +50,13 @@ class ApiServices {
             const xhr = new XMLHttpRequest();
             xhr.open(method, url);
 
-            xhr.addEventListener('load', () => {
-                resolve(xhr);
-            })
+            xhr.onload = () => {
+                if (xhr.status >= 200 && xhr.status <= 299) {
+                    resolve(xhr);
+                } else {
+                    reject()
+                }
+            };
 
             if (!(data instanceof FormData)) {
                 xhr.setRequestHeader('Content-Type', 'application/json');
@@ -61,12 +65,9 @@ class ApiServices {
             xhr.withCredentials = true;
             xhr.timeout = timeout;
 
-            xhr.addEventListener('onerror', () => {
-                reject
-            })
-            xhr.addEventListener('ontimeout', () => {
-                reject
-            })
+            xhr.onerror = reject;
+            xhr.ontimeout = reject;
+
 
             if (method === 'GET') {
                 xhr.send();
@@ -81,4 +82,4 @@ class ApiServices {
 
 }
 
-export default ApiServices
+export default ApiServices;

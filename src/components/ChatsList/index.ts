@@ -46,11 +46,11 @@ class ChatsList extends Block {
     activeChat(id: number) {
         const child = this.getAllChildrenChatList()
         var child_as_arr = Array.from(child);
-        child_as_arr.forEach((el: HTMLDataListElement) => {
-            if (Number(el.id) === id) {
-                el.classList.add('active')
+        child_as_arr.forEach((el) => {
+            if (Number((el as HTMLElement).id) === id) {
+                (el as HTMLElement).classList.add('active')
             } else {
-                el.classList.remove('active')
+                (el as HTMLElement).classList.remove('active')
             }
         });
     };

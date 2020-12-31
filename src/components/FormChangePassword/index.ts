@@ -1,4 +1,5 @@
 import Handlebars from 'handlebars';
+import { modalErrorPassword } from './../../pages/changePassword/index.js';
 import { UsersService } from '../../services/index.js';
 import { ChangeUserPasswordType, UserPasswordType } from '../../types/index.js';
 import Block from '../../utils/Block/index.js';
@@ -23,12 +24,12 @@ class ChangePasswordUser extends Block {
                     user: { ...data }
                 },
             })
-        })
+        }).catch(() => modalErrorPassword.openAndClose())
     }
     changeUserPassword(data: ChangeUserPasswordType) {
         UsersService.changeUserPassword(data).then((res: XMLHttpRequest) => {
             if (res) alert('Пароль успешно измененен');
-        })
+        }).catch(() => modalErrorPassword.openAndClose())
     }
 };
 

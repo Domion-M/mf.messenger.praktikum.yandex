@@ -10,6 +10,7 @@ import ModalAddUserChat from '../../components/ModalUserChat/index.js';
 import { ChatsService, UsersService } from '../../services/index.js';
 import UserList from '../../components/ModalUserChat/ListUserOnline/index.js';
 import DeleteUserToChat from '../../components/ModalUserChat/ListUserToChat/index.js';
+import ErrorModal from '../../components/ErrorModal/index.js';
 export const listDeleteUser = new DeleteUserToChat({});
 export const chatsList = new ChatsList({
     infoElement: {
@@ -124,12 +125,20 @@ const listUsersOnline = new UserList({
         userlist: []
     }
 });
+export const modalErrorChats = new ErrorModal({
+    className: "error-modal-window",
+    infoElement: {
+        error: {
+            errorMessage: 'Что-то пошло не так'
+        }
+    }
+});
 function getUserOnline(e) {
     UsersService.getAllUsersOnline({ login: e.target.value }).then((res) => {
         if (res.status === 200) {
             listUsersOnline.reRender(JSON.parse(res.response));
         }
-    });
+    }).catch(() => modalErrorChats.openAndClose());
 }
 function headleAddUserChat() {
     modalAddUser.openAndClose();
@@ -145,7 +154,7 @@ function headleDeleteUserChat() {
     const data = chatsList.state.idChat;
     ChatsService.getChatOnUsers(data).then((res) => {
         listDeleteUser.reRender(JSON.parse(res.response));
-    });
+    }).catch(() => modalErrorChats.openAndClose());
 }
 function openModalMenu() {
     if (chatsList.state.idChat) {
@@ -192,6 +201,7 @@ function sendMailChat(e) {
     else {
         inputMessage.getElement().focus();
     }
+    ;
 }
 ;
 function sendMailKeyboardEnter(e) {
@@ -199,6 +209,7 @@ function sendMailKeyboardEnter(e) {
         e.preventDefault();
         sendMailChat(e);
     }
+    ;
 }
 inputMessage.getElement().addEventListener('keydown', sendMailKeyboardEnter);
 export class Chats extends Block {
@@ -206,6 +217,7 @@ export class Chats extends Block {
         const template = Handlebars.compile(tpl);
         return template(pageInfo);
     }
+    ;
     getComponent() {
         render('.window-chat__message__send-message', sendMail);
         render('.profile-wrap', btnProfile);
@@ -222,7 +234,9 @@ export class Chats extends Block {
         render('.modal-add-user-chat', inputAddUsers);
         render('.modal-add-user-chat', listUsersOnline);
         render('.modal-delete-user-chat', listDeleteUser);
+        render('main', modalErrorChats);
         chatsList.getChatsList();
     }
 }
+;
 //# sourceMappingURL=index.js.map

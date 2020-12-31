@@ -64,8 +64,7 @@ class Input extends Block {
             });
         }
         else {
-            this.setProps(Object.assign(Object.assign({}, this.props), {
-                infoElement: {
+            this.setProps(Object.assign(Object.assign({}, this.props), { infoElement: {
                     input: {
                         name: element.name,
                         value: element.value,
@@ -73,8 +72,7 @@ class Input extends Block {
                         type: 'password',
                         active: 'error'
                     },
-                }
-            }));
+                } }));
         }
         ;
     }
@@ -151,14 +149,11 @@ class Input extends Block {
     }
     changeValue(val = '') {
         const element = this.getElement();
-        console.log(this.props);
-        this.setProps(Object.assign(Object.assign({}, this.props), {
-            input: {
+        this.setProps(Object.assign(Object.assign({}, this.props), { input: {
                 name: element.name,
                 type: 'text',
                 value: val,
-            }
-        }));
+            } }));
     }
 }
 ;

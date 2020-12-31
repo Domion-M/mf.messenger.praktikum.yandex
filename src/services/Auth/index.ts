@@ -31,8 +31,6 @@ export default class AuthService {
 
     signOut() {
         return this.APIService.post('auth/logout')
-            .then(response => response)
-            .catch(e => { throw e })
     }
 
 }

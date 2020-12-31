@@ -4,6 +4,7 @@ import { UsersService } from '../../services/index.js';
 import { UserDataType } from '../../types/index.js';
 import Block from '../../utils/Block/index.js';
 import { tpl } from './template.tpl.js';
+import { modalErrorProfile } from '../../pages/changeProfile/index.js';
 
 class ChangeDateUser extends Block {
 
@@ -24,17 +25,17 @@ class ChangeDateUser extends Block {
                     user: { ...data }
                 },
             })
-        })
+        }).catch(() => modalErrorProfile.openAndClose())
     }
     changeUserProfile(newDataUser: userType) {
         UsersService.changeUserProfile(newDataUser).then((res: XMLHttpRequest) => {
             if (res) this.getUserData()
-        })
+        }).catch(() => modalErrorProfile.openAndClose())
     }
     changeUserAvatar(data: FormData) {
         UsersService.changeUserAvatar(data).then((res: XMLHttpRequest) => {
             if (res) this.getUserData()
-        })
+        }).catch(() => modalErrorProfile.openAndClose())
     }
 };
 

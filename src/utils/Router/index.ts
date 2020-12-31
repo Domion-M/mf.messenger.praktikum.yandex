@@ -1,10 +1,10 @@
-import { Route } from "../Route/";
+import { Route } from "../Route";
 
 export class Router {
-    routes: any[]
-    history: History
-    _currentRoute: Route | null
-    _rootQuery: string
+    routes!: any[]
+    history!: History
+    _currentRoute!: Route | null
+    _rootQuery!: string
     static __instance: Router;
 
     constructor(rootQuery: string) {

@@ -1,4 +1,4 @@
-import { queryStringify } from '../../../utils/queryStringifyGet';
+import { queryStringify } from '.';
 
 describe('Function transform Object to string:', () => {
     test('should be definde', () => {

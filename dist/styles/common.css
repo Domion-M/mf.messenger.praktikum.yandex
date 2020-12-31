@@ -53,6 +53,17 @@ button {
 .d-flex {
   display: flex; }
 
+.error-modal-window {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 10px;
+  color: #ff2f2f;
+  padding: 30px 20px;
+  border: 1px solid #ff2f2f;
+  border-radius: 5px;
+  display: none; }
+
 /* active className */
 .display {
   display: block; }

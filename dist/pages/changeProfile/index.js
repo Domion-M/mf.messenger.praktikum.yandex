@@ -6,6 +6,7 @@ import Fragment from '../../components/Fragment/index.js';
 import { tpl } from './tempalte.js';
 import Block from '../../utils/Block/index.js';
 import ChangeDateUser from '../../components/FormChangeUserData/index.js';
+import ErrorModal from '../../components/ErrorModal/index.js';
 const pageInfo = {
     page: {
         title: 'Вход',
@@ -150,6 +151,14 @@ const changeDataUser = new ChangeDateUser({
         }
     }
 });
+export const modalErrorProfile = new ErrorModal({
+    className: "error-modal-window",
+    infoElement: {
+        error: {
+            errorMessage: 'Что-то пошло не так'
+        }
+    }
+});
 export class ChangeProfile extends Block {
     render() {
         return template(pageInfo);
@@ -163,6 +172,7 @@ export class ChangeProfile extends Block {
         render('main', modal);
         render('.change-avatar__window-change-avatar', buttonModal);
         render('.change-avatar__window-change-avatar', buttonModalClose);
+        render('main', modalErrorProfile);
         changeDataUser.getUserData();
     }
     ;

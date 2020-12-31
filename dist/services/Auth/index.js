@@ -9,9 +9,7 @@ export default class AuthService {
         return this.APIService.post(`auth/signup/`, { data });
     }
     signOut() {
-        return this.APIService.post('auth/logout')
-            .then(response => response)
-            .catch(e => { throw e; });
+        return this.APIService.post('auth/logout');
     }
 }
 //# sourceMappingURL=index.js.map

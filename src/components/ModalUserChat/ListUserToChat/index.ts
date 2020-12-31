@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 import { ChatsService } from '../../../services/index.js';
-import { chatsList, listDeleteUser } from '../../../pages/chats/index.js';
+import { chatsList, listDeleteUser, modalErrorChats } from '../../../pages/chats/index.js';
 import Block from '../../../utils/Block/index.js';
 import { tpl } from './template.tpl.js';
 
@@ -21,7 +21,7 @@ class DeleteUserToChat extends Block {
                 if (res.status === 200) {
                     ChatsService.getChatOnUsers(chatsList.state.idChat).then((res: XMLHttpRequest) => {
                         listDeleteUser.reRender(JSON.parse(res.response))
-                    })
+                    }).catch(() => modalErrorChats.openAndClose())
                 }
             })
 

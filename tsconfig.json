@@ -13,7 +13,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
-    "strict": false,
+    "strict": true,
     "noImplicitAny": true,
     "alwaysStrict": false,
     "strictNullChecks": true,

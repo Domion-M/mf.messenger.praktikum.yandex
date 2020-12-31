@@ -1,5 +1,5 @@
-import { isEqual } from "../isEqual/";
-import { render } from "../Render/";
+import { isEqualString } from "../isEqualString";
+import { render } from "../Render";
 
 export class Route {
     _pathname: string
@@ -28,7 +28,7 @@ export class Route {
     }
 
     match(pathname: string) {
-        return isEqual(pathname, this._pathname);
+        return isEqualString(pathname, this._pathname);
     }
 
     render() {

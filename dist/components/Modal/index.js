@@ -11,9 +11,6 @@ class Modal extends Block {
         return template(infoElement);
     }
     ;
-    openAndClose() {
-        console.log(this.content());
-    }
 }
 ;
 export default Modal;

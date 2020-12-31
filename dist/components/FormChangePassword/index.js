@@ -1,3 +1,4 @@
+import { modalErrorPassword } from './../../pages/changePassword/index.js';
 import { UsersService } from '../../services/index.js';
 import Block from '../../utils/Block/index.js';
 import { tpl } from './template.tpl.js';
@@ -20,13 +21,13 @@ class ChangePasswordUser extends Block {
                     user: Object.assign({}, data)
                 },
             });
-        });
+        }).catch(() => modalErrorPassword.openAndClose());
     }
     changeUserPassword(data) {
         UsersService.changeUserPassword(data).then((res) => {
             if (res)
                 alert('Пароль успешно измененен');
-        });
+        }).catch(() => modalErrorPassword.openAndClose());
     }
 }
 ;

@@ -6,6 +6,7 @@ import { tpl } from './template.js';
 import Input from '../../components/Input/index.js';
 import Block from '../../utils/Block/index.js';
 import { AuthService } from '../../services/index.js';
+import ErrorModal from '../../components/ErrorModal/index.js';
 const pageInfo = {
     page: {
         title: 'Регистрация',
@@ -158,6 +159,14 @@ const inputPasswordToo = new Input({
     onFocus: validationPasswordToo,
     onBlur: validationPasswordToo,
 });
+const modalError = new ErrorModal({
+    className: "error-modal-window",
+    infoElement: {
+        error: {
+            errorMessage: 'Что-то пошло не так'
+        }
+    }
+});
 class UserSignin {
     constructor(email, login, first_name, second_name, phone, password) {
         this.email = email;
@@ -193,10 +202,10 @@ function logDateUser(e) {
         if (userDate[5] === userDate[6]) {
             const user = new UserSignin(userDate[0], userDate[1], userDate[2], userDate[3], userDate[4], userDate[5]);
             AuthService.singUp(user).then((res) => {
-                if (res.status === 200) {
+                if (res.status > 200 && res.status <= 299) {
                     router.go('/');
                 }
-            });
+            }).catch(() => modalError.openAndClose());
         }
         else {
             inputFocusBlur[6].focus();
@@ -207,13 +216,14 @@ function logDateUser(e) {
 }
 ;
 function validEmail(e) {
-    const inputPlaceholder = this.parentElement.parentElement;
+    var _a;
+    const inputPlaceholder = (_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.add('animation');
     }
     else if (e.type === 'blur') {
         if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+            inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.remove('animation');
         }
         ;
         inputEmail.validEmail();
@@ -222,13 +232,14 @@ function validEmail(e) {
 }
 ;
 function validationLogin(e) {
-    const inputPlaceholder = this.parentElement.parentElement;
+    var _a;
+    const inputPlaceholder = (_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.add('animation');
     }
     else if (e.type === 'blur') {
         if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+            inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.remove('animation');
         }
         inputlogin.validation();
     }
@@ -236,13 +247,14 @@ function validationLogin(e) {
 }
 ;
 function validationName(e) {
-    const inputPlaceholder = this.parentElement.parentElement;
+    var _a;
+    const inputPlaceholder = (_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.add('animation');
     }
     else if (e.type === 'blur') {
         if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+            inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.remove('animation');
         }
         ;
         inputName.validation();
@@ -251,13 +263,14 @@ function validationName(e) {
 }
 ;
 function validationSecondName(e) {
-    const inputPlaceholder = this.parentElement.parentElement;
+    var _a;
+    const inputPlaceholder = (_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.add('animation');
     }
     else if (e.type === 'blur') {
         if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+            inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.remove('animation');
         }
         ;
         inputSecondName.validation();
@@ -266,13 +279,14 @@ function validationSecondName(e) {
 }
 ;
 function validationPhone(e) {
-    const inputPlaceholder = this.parentElement.parentElement;
+    var _a;
+    const inputPlaceholder = (_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.add('animation');
     }
     else if (e.type === 'blur') {
         if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+            inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.remove('animation');
         }
         ;
         inputPhone.validPhone();
@@ -281,13 +295,14 @@ function validationPhone(e) {
 }
 ;
 function validationPassword(e) {
-    const inputPlaceholder = this.parentElement.parentElement;
+    var _a;
+    const inputPlaceholder = (_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.add('animation');
     }
     else if (e.type === 'blur') {
         if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+            inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.remove('animation');
         }
         ;
         inputPassword.validPassword();
@@ -296,13 +311,14 @@ function validationPassword(e) {
 }
 ;
 function validationPasswordToo(e) {
-    const inputPlaceholder = this.parentElement.parentElement;
+    var _a;
+    const inputPlaceholder = (_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.add('animation');
     }
     else if (e.type === 'blur') {
         if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+            inputPlaceholder === null || inputPlaceholder === void 0 ? void 0 : inputPlaceholder.classList.remove('animation');
         }
         ;
         inputPasswordToo.validPassword();
@@ -314,6 +330,7 @@ export class Signin extends Block {
     render() {
         return template(pageInfo);
     }
+    ;
     getComponent() {
         render('.btn-container', buttonAuth);
         render('.btn-container', buttonInfo);
@@ -325,6 +342,9 @@ export class Signin extends Block {
         render('.phone-enter', inputPhone);
         render('.password-enter', inputPassword);
         render('.password-too-enter', inputPasswordToo);
+        render('main', modalError);
     }
+    ;
 }
+;
 //# sourceMappingURL=index.js.map

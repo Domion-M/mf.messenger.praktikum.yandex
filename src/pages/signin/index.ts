@@ -8,6 +8,7 @@ import { tpl } from './template.js';
 import Input from '../../components/Input/index.js';
 import Block from '../../utils/Block/index.js';
 import { AuthService } from '../../services/index.js';
+import ErrorModal from '../../components/ErrorModal/index.js';
 
 const pageInfo: pageInfoType = {
     page: {
@@ -188,7 +189,15 @@ const inputPasswordToo = new Input({
     onBlur: validationPasswordToo,
 });
 
+const modalError = new ErrorModal({
+    className: "error-modal-window",
+    infoElement: {
+        error: {
+            errorMessage: 'Что-то пошло не так'
+        }
 
+    }
+});
 
 class UserSignin {
     constructor(
@@ -224,10 +233,10 @@ function logDateUser(e: Event) {
         if (userDate[5] === userDate[6]) {
             const user = new UserSignin(userDate[0], userDate[1], userDate[2], userDate[3], userDate[4], userDate[5]);
             AuthService.singUp(user).then((res: XMLHttpRequest) => {
-                if (res.status === 200) {
+                if (res.status > 200 && res.status <= 299) {
                     router.go('/');
                 }
-            })
+            }).catch(() => modalError.openAndClose())
         }
         else {
             (<HTMLInputElement>inputFocusBlur[6]).focus();
@@ -236,85 +245,85 @@ function logDateUser(e: Event) {
 };
 
 
-function validEmail(e: Event) {
-    const inputPlaceholder = this.parentElement.parentElement;
+function validEmail(this: HTMLElement, e: Event) {
+    const inputPlaceholder = this.parentElement?.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation')
+        inputPlaceholder?.classList.add('animation')
     } else if (e.type === 'blur') {
-        if (this.value === '') {
-            inputPlaceholder.classList.remove('animation')
+        if ((this as HTMLInputElement).value === '') {
+            inputPlaceholder?.classList.remove('animation')
         };
         inputEmail.validEmail();
     };
 };
 
-function validationLogin(e: Event) {
-    const inputPlaceholder = this.parentElement.parentElement;
+function validationLogin(this: HTMLElement, e: Event) {
+    const inputPlaceholder = this.parentElement?.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation')
+        inputPlaceholder?.classList.add('animation')
     } else if (e.type === 'blur') {
-        if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+        if ((this as HTMLInputElement).value === '') {
+            inputPlaceholder?.classList.remove('animation');
         }
         inputlogin.validation();
     };
 };
 
-function validationName(e: Event) {
-    const inputPlaceholder = this.parentElement.parentElement;
+function validationName(this: HTMLElement, e: Event) {
+    const inputPlaceholder = this.parentElement?.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation')
+        inputPlaceholder?.classList.add('animation')
     } else if (e.type === 'blur') {
-        if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+        if ((this as HTMLInputElement).value === '') {
+            inputPlaceholder?.classList.remove('animation');
         };
         inputName.validation();
     };
 };
 
-function validationSecondName(e: Event) {
-    const inputPlaceholder = this.parentElement.parentElement;
+function validationSecondName(this: HTMLElement, e: Event) {
+    const inputPlaceholder = this.parentElement?.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder?.classList.add('animation');
     } else if (e.type === 'blur') {
-        if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+        if ((this as HTMLInputElement).value === '') {
+            inputPlaceholder?.classList.remove('animation');
         };
         inputSecondName.validation();
     };
 };
 
-function validationPhone(e: Event) {
-    const inputPlaceholder = this.parentElement.parentElement;
+function validationPhone(this: HTMLElement, e: Event) {
+    const inputPlaceholder = this.parentElement?.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder?.classList.add('animation');
     } else if (e.type === 'blur') {
-        if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+        if ((this as HTMLInputElement).value === '') {
+            inputPlaceholder?.classList.remove('animation');
         };
         inputPhone.validPhone();
     };
 };
 
-function validationPassword(e: Event) {
-    const inputPlaceholder = this.parentElement.parentElement;
+function validationPassword(this: HTMLElement, e: Event) {
+    const inputPlaceholder = this.parentElement?.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder?.classList.add('animation');
     } else if (e.type === 'blur') {
-        if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+        if ((this as HTMLInputElement).value === '') {
+            inputPlaceholder?.classList.remove('animation');
         };
         inputPassword.validPassword();
     };
 };
 
-function validationPasswordToo(e: Event) {
-    const inputPlaceholder = this.parentElement.parentElement;
+function validationPasswordToo(this: HTMLElement, e: Event) {
+    const inputPlaceholder = this.parentElement?.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation')
+        inputPlaceholder?.classList.add('animation')
     } else if (e.type === 'blur') {
-        if (this.value === '') {
-            inputPlaceholder.classList.remove('animation')
+        if ((this as HTMLInputElement).value === '') {
+            inputPlaceholder?.classList.remove('animation')
         };
         inputPasswordToo.validPassword();
     };
@@ -323,7 +332,7 @@ function validationPasswordToo(e: Event) {
 export class Signin extends Block {
     render() {
         return template(pageInfo);
-    }
+    };
     getComponent() {
         render('.btn-container', buttonAuth);
         render('.btn-container', buttonInfo);
@@ -335,5 +344,6 @@ export class Signin extends Block {
         render('.phone-enter', inputPhone);
         render('.password-enter', inputPassword);
         render('.password-too-enter', inputPasswordToo);
-    }
-}
+        render('main', modalError);
+    };
+};

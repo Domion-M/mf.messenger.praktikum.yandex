@@ -8,6 +8,7 @@ import Input from '../../components/Input/index.js';
 import { tpl } from './tamplate.js';
 import Block from '../../utils/Block/index.js';
 import { AuthService } from '../../services/index.js';
+import ErrorModal from '../../components/ErrorModal/index.js';
 
 const pageInfo: pageInfoType = {
     page: {
@@ -82,6 +83,15 @@ const inputWrap = new InputWrapper({
     },
 });
 
+const modalError = new ErrorModal({
+    className: "error-modal-window",
+    infoElement: {
+        error: {
+            errorMessage: 'Неправильный логин или пороль'
+        }
+
+    }
+});
 
 class UserAuth {
     constructor(
@@ -97,45 +107,44 @@ function logDateUser(e: Event) {
     e.preventDefault();
     const userDate: string[] = [];
     const inputFocusBlur: NodeListOf<Element> = document.querySelectorAll('.login-and-signin-form__entry input');
-    inputFocusBlur.forEach((el: HTMLInputElement) => {
+    inputFocusBlur.forEach((el: Element) => {
         const listClass = el.classList[1]
         if (listClass === 'active') {
-            userDate.push(el.value);
+            userDate.push((el as HTMLInputElement).value);
         }
         else {
-            el.focus();
+            (el as HTMLInputElement).focus();
         }
     });
     if (userDate.length === inputFocusBlur.length) {
         const user = new UserAuth(userDate[0], userDate[1]);
         AuthService.signIn(user).then((res: XMLHttpRequest) => {
-            if (res.status === 200) {
+            if (res.status >= 200 && res.status <= 299) {
                 router.go('/');
             }
-        })
+        }).catch(() => modalError.openAndClose())
     }
 };
 
-function validLogin(e: Event) {
-    const inputPlaceholder = this.parentElement.parentElement;
-    console.log(inputPlaceholder);
+function validLogin(this: HTMLElement, e: Event) {
+    const inputPlaceholder = this.parentElement?.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation')
+        inputPlaceholder?.classList.add('animation')
     } else if (e.type === 'blur') {
-        if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
-        };
+        if ((this as HTMLInputElement).value === '') {
+            inputPlaceholder?.classList.remove('animation');
+        }
         input.validation();
     };
 };
 
-function validPassword(e: Event) {
-    const inputPlaceholder = this.parentElement.parentElement;
+function validPassword(this: HTMLElement, e: Event) {
+    const inputPlaceholder = this.parentElement?.parentElement;
     if (e.type === 'focus') {
-        inputPlaceholder.classList.add('animation');
+        inputPlaceholder?.classList.add('animation');
     } else if (e.type === 'blur') {
-        if (this.value === '') {
-            inputPlaceholder.classList.remove('animation');
+        if ((this as HTMLInputElement).value === '') {
+            inputPlaceholder?.classList.remove('animation');
         };
         inputPass.validPassword();
     };
@@ -150,5 +159,6 @@ export class Login extends Block {
         render('.input-container', inputWrap);
         render('.login-enter', input);
         render('.password-enter', inputPass);
+        render('main', modalError);
     }
 }

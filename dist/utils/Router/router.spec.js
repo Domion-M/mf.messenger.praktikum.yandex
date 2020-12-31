@@ -1,4 +1,4 @@
-import { Router } from '../../../utils/Router';
+import { Router } from '.';
 describe('Router :', () => {
     let router = new Router('#root');
     beforeEach(() => {
