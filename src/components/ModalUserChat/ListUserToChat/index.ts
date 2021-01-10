@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars';
-import { ChatsService } from '../../../services/index.js';
-import { chatsList, listDeleteUser, modalErrorChats } from '../../../pages/chats/index.js';
-import Block from '../../../utils/Block/index.js';
-import { tpl } from './template.tpl.js';
+import { ChatsService } from '../../../services';
+import { chatsList, listDeleteUser, modalErrorChats } from '../../../pages/chats';
+import Block from '../../../utils/Block';
+import { tpl } from './template.tpl';
 
 class DeleteUserToChat extends Block {
 

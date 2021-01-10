@@ -1,8 +1,8 @@
-import { API_CONFIG } from '../config/apiConfig.js';
-import ApiServices from './Api/index.js';
-import Auth from './Auth/index.js';
-import Users from './User/index.js';
-import Chats from './Chats/index.js'
+import { API_CONFIG } from '../config/apiConfig';
+import ApiServices from './Api';
+import Auth from './Auth';
+import Users from './User';
+import Chats from './Chats'
 
 const API = new ApiServices(API_CONFIG.BASE_URL);
 const AuthService = new Auth(API);

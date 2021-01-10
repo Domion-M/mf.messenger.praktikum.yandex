@@ -1,14 +1,14 @@
 import Handlebars from 'handlebars';
-import { router } from './../../index.js';
-import { render } from '../../utils/Render/index.js';
-import Button from '../../components/Button/index.js';
-import Modal from '../../components/Modal/index.js';
-import Fragment from '../../components/Fragment/index.js';
-import { pageInfoType } from '../../types/index.js';
-import { tpl } from './tempalte.js';
-import Block from '../../utils/Block/index.js';
-import ChangeDateUser from '../../components/FormChangeUserData/index.js';
-import ErrorModal from '../../components/ErrorModal/index.js';
+import { router } from './../../';
+import { render } from '../../utils/Render';
+import Button from '../../components/Button';
+import Modal from '../../components/Modal';
+import Fragment from '../../components/Fragment';
+import { pageInfoType } from '../../types';
+import { tpl } from './tempalte';
+import Block from '../../utils/Block';
+import ChangeDateUser from '../../components/FormChangeUserData';
+import ErrorModal from '../../components/ErrorModal';
 
 const pageInfo: pageInfoType = {
     page: {

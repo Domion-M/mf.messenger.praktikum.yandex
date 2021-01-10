@@ -1,4 +1,4 @@
-import ApiServices from "../Api/index.js"
+import ApiServices from '../Api';
 
 type userSignUpType = {
 

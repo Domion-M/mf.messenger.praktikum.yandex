@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
-import { fragmentPropsType } from '../../types/index.js';
-import Block from '../../utils/Block/index.js';
-import { tpl } from './template.js';
+import { fragmentPropsType } from '../../types';
+import Block from '../../utils/Block';
+import { tpl } from './template';
 
 class Fragment extends Block {
 

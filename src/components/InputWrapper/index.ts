@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
-import Block from '../../utils/Block/index.js';
-import { tpl } from './template.js';
+import Block from '../../utils/Block';
+import { tpl } from './template';
 
 type inputPropsType = {
     infoElement: {

@@ -1,14 +1,14 @@
 import Handlebars from 'handlebars';
-import { router } from './../../index.js';
-import { render } from '../../utils/Render/index.js';
-import Button from '../../components/Button/index.js';
-import InputWrapper from '../../components/InputWrapper/index.js';
+import { router } from './../../';
+import { render } from '../../utils/Render';
+import Button from '../../components/Button';
+import InputWrapper from '../../components/InputWrapper';
 import { pageInfoType } from '../../types/index';
-import Input from '../../components/Input/index.js';
-import { tpl } from './tamplate.js';
-import Block from '../../utils/Block/index.js';
-import { AuthService } from '../../services/index.js';
-import ErrorModal from '../../components/ErrorModal/index.js';
+import Input from '../../components/Input';
+import { tpl } from './tamplate';
+import Block from '../../utils/Block';
+import { AuthService } from '../../services';
+import ErrorModal from '../../components/ErrorModal';
 
 const pageInfo: pageInfoType = {
     page: {

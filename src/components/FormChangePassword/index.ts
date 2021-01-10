@@ -1,9 +1,9 @@
 import Handlebars from 'handlebars';
-import { modalErrorPassword } from './../../pages/changePassword/index.js';
-import { UsersService } from '../../services/index.js';
-import { ChangeUserPasswordType, UserPasswordType } from '../../types/index.js';
-import Block from '../../utils/Block/index.js';
-import { tpl } from './template.tpl.js';
+import { modalErrorPassword } from './../../pages/changePassword';
+import { UsersService } from '../../services';
+import { ChangeUserPasswordType, UserPasswordType } from '../../types';
+import Block from '../../utils/Block';
+import { tpl } from './template.tpl';
 
 class ChangePasswordUser extends Block {
 

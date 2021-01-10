@@ -1,10 +1,9 @@
 import Handlebars from 'handlebars';
-import { userType } from './../../types/index';
-import { UsersService } from '../../services/index.js';
-import { UserDataType } from '../../types/index.js';
-import Block from '../../utils/Block/index.js';
-import { tpl } from './template.tpl.js';
-import { modalErrorProfile } from '../../pages/changeProfile/index.js';
+import { userType, UserDataType } from './../../types';
+import { UsersService } from '../../services';
+import Block from '../../utils/Block';
+import { tpl } from './template.tpl';
+import { modalErrorProfile } from '../../pages/changeProfile';
 
 class ChangeDateUser extends Block {
 

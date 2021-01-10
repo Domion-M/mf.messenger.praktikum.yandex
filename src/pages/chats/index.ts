@@ -1,17 +1,17 @@
 import Handlebars from 'handlebars';
-import { router } from './../../index.js';
-import { render } from '../../utils/Render/index.js';
-import Button from '../../components/Button/index.js';
-import Fragment from '../../components/Fragment/index.js';
-import Input from '../../components/Input/index.js';
-import { tpl } from './template.js';
-import Block from '../../utils/Block/index.js';
-import ChatsList from '../../components/ChatsList/index.js';
-import ModalAddUserChat from '../../components/ModalUserChat/index.js';
-import { ChatsService, UsersService } from '../../services/index.js';
-import UserList from '../../components/ModalUserChat/ListUserOnline/index.js';
-import DeleteUserToChat from '../../components/ModalUserChat/ListUserToChat/index.js';
-import ErrorModal from '../../components/ErrorModal/index.js';
+import { router } from './../../';
+import { render } from '../../utils/Render';
+import Button from '../../components/Button';
+import Fragment from '../../components/Fragment';
+import Input from '../../components/Input';
+import { tpl } from './template';
+import Block from '../../utils/Block';
+import ChatsList from '../../components/ChatsList';
+import ModalAddUserChat from '../../components/ModalUserChat';
+import { ChatsService, UsersService } from '../../services';
+import UserList from '../../components/ModalUserChat/ListUserOnline';
+import DeleteUserToChat from '../../components/ModalUserChat/ListUserToChat';
+import ErrorModal from '../../components/ErrorModal';
 
 type ChatsPropsType = {
     page: {

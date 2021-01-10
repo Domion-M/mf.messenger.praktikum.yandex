@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
-import { inputPropsType } from '../../types/index.js';
-import Block from '../../utils/Block/index.js';
-import { tpl } from './template.js';
+import { inputPropsType } from '../../types';
+import Block from '../../utils/Block';
+import { tpl } from './template';
 
 class Input extends Block {
 

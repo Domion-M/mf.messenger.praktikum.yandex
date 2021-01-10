@@ -1,4 +1,4 @@
-import ApiServices from "../Api/index.js"
+import ApiServices from '../Api/';
 
 enum CHATS {
     USERS = '/chats/users',

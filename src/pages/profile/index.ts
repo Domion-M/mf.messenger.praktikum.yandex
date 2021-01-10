@@ -1,12 +1,12 @@
 import Handlebars from 'handlebars';
-import { router } from './../../index.js';
-import { render } from '../../utils/Render/index.js';
-import Button from '../../components/Button/index.js';
-import { pageInfoType } from '../../types/index.js';
-import { tpl } from './template.js';
-import Block from '../../utils/Block/index.js';
-import { AuthService } from '../../services/index.js';
-import UserData from '../../components/FormDataUser/index.js';
+import { router } from './../../';
+import { render } from '../../utils/Render';
+import Button from '../../components/Button';
+import { pageInfoType } from '../../types';
+import { tpl } from './template';
+import Block from '../../utils/Block';
+import { AuthService } from '../../services';
+import UserData from '../../components/FormDataUser';
 
 const infoElement: pageInfoType = {
     page: {

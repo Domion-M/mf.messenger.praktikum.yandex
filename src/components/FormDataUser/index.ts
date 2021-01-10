@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars';
-import { UsersService } from '../../services/index.js';
-import { UserDataType } from '../../types/index.js';
-import Block from '../../utils/Block/index.js';
-import { tpl } from './template.tpl.js';
+import { UsersService } from '../../services';
+import { UserDataType } from '../../types';
+import Block from '../../utils/Block';
+import { tpl } from './template.tpl';
 
 class UserData extends Block {
 

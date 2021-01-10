@@ -1,11 +1,12 @@
-import { Error } from './pages/404/index.js';
-import { Profile } from './pages/profile/index.js';
-import { Chats } from './pages/chats/index.js';
-import { Signin } from './pages/signin/index.js';
-import { Login } from './pages/login/index.js';
-import { Router } from "./utils/Router/index.js";
-import { ChangeProfile } from './pages/changeProfile/index.js';
-import { ChangePassword } from './pages/changePassword/index.js';
+import { Error } from './pages/404';
+import { Profile } from './pages/profile';
+import { Chats } from './pages/chats';
+import { Signin } from './pages/signin';
+import { Login } from './pages/login';
+import { Router } from "./utils/Router";
+import { ChangeProfile } from './pages/changeProfile';
+import { ChangePassword } from './pages/changePassword';
+import './styles/style.scss';
 
 export const router = new Router("#root");
 

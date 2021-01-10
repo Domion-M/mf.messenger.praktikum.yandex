@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars';
-import { router } from '../../index.js';
-import { ChatsService } from '../../services/index.js';
-import Block from '../../utils/Block/index.js';
-import { tpl } from './template.tpl.js';
+import { router } from '../../';
+import { ChatsService } from '../../services';
+import Block from '../../utils/Block';
+import { tpl } from './template.tpl';
 
 class ChatsList extends Block {
     state: { idChat: number }

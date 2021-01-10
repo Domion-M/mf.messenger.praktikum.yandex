@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
-import Block from '../../utils/Block/index.js';
-import { tpl } from './template.tpl.js';
+import Block from '../../utils/Block';
+import { tpl } from './template.tpl';
 
 class ModalAddUserChat extends Block {
     open: boolean

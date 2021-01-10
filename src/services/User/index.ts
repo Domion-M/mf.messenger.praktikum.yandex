@@ -1,5 +1,5 @@
-import { ChangeUserPasswordType, userType } from "../../types/index.js"
-import ApiServices from "../Api/index.js"
+import { ChangeUserPasswordType, userType } from '../../types';
+import ApiServices from '../Api';
 
 
 

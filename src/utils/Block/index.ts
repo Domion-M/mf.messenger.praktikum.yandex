@@ -1,5 +1,5 @@
-import { EventType } from '../../types/index.js';
-import EventBus from '../EventBus/index.js';
+import { EventType } from '../../types';
+import EventBus from '../EventBus';
 
 interface Props {
     [K: string]: Function | string | object;
