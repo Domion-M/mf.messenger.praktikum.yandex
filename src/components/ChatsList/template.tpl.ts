@@ -12,4 +12,4 @@ export const tpl = `
                 {{/if}}
             </li>
            {{/each}}
-`
+`;

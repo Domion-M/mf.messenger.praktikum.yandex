@@ -4,4 +4,4 @@ export const tpl = `
 <li id="{{id}}"><div class="delete-to-chat" onclick="window.deleteToChat({{id}})"></div><div>{{first_name}} {{second_name}}</div></li>
 {{/each}}
 </ul>
-`
+`;

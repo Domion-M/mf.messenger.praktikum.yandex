@@ -1,5 +1,5 @@
 export
-    const tpl = `
+const tpl = `
 {{#with page}}
 <main class="wrap-page">
 <div class="window-chat">

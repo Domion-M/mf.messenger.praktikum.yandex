@@ -22,4 +22,4 @@ export const tpl = `
             </form>
         </div>
     {{/with}}
-        `
+        `;

@@ -36,4 +36,4 @@ export const tpl = `
         </div>
     </div>
 </div>
-{{/with}}`
+{{/with}}`;

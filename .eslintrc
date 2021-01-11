@@ -1,0 +1,24 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node":true
+      },
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project":["./tsconfig.json","webpack.config.js"],
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+      },
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "rules":{
+        "no-underscore-dangle":"off",
+        "class-methods-use-this":"off",
+        "import/prefer-default-export":"off",
+        "max-classes-per-file":"off",
+        "import/no-cycle":"off"
+      },
+    "extends": ["airbnb-typescript/base"]
+}

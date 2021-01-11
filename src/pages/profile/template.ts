@@ -1,4 +1,3 @@
-
 export const tpl = `
 {{#with page}}
 <main class="d-flex">
