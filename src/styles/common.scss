@@ -1,79 +1,79 @@
 //var
-@import './variable';
+@import "./variable";
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-  }
-  
-  h1,
-  h2,
-  h3 {
-    font-weight: normal;
-  }
-  a {
-    text-decoration: none;
-  }
-  ul{
-    list-style: none;
-  }
-  input {
-    border: none;
-    width: 100%;
-  }
-  button:focus,
-  input:focus {
-    outline: none;
-  }
-  button {
-    border: none;
-    background: none;
-    cursor: pointer;
-  }
-  
-  /*  */
-  
-  .wrap-page {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1 100%;
-  }
-  .text-center {
-    text-align: center;
-  }
-  .general-btn {
-    width: 100%;
-    background: $blue-color;
-    border-radius: 8px;
-    border: none;
-    color: #fff;
-    font-size: 13px;
-    height: 37px;
-  }
-  .d-flex {
-    display: flex;
-  }
-  // error-modal 
-  .error-modal-window{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 10px;
-    color: $red-color;
-    padding: 30px 20px;
-    border: 1px solid $red-color;
-    border-radius: 5px;
-    display: none;
-  }
-  
-  /* active className */
-  
-  .display {
-    display: block;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+input {
+  border: none;
+  width: 100%;
+}
+button:focus,
+input:focus {
+  outline: none;
+}
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/*  */
+
+.wrap-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 100%;
+}
+.text-center {
+  text-align: center;
+}
+.general-btn {
+  width: 100%;
+  background: $blue-color;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  height: 37px;
+}
+.d-flex {
+  display: flex;
+}
+// error-modal
+.error-modal-window {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 10px;
+  color: $red-color;
+  background: $white-color;
+  padding: 30px 20px;
+  border: 1px solid $red-color;
+  border-radius: 5px;
+  display: none;
+}
+
+/* active className */
+
+.display {
+  display: block;
+}
