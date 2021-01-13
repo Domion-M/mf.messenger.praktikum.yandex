@@ -12,6 +12,8 @@ import { ChatsService, UsersService } from '../../services';
 import UserList from '../../components/ModalUserChat/ListUserOnline';
 import DeleteUserToChat from '../../components/ModalUserChat/ListUserToChat';
 import ErrorModal from '../../components/ErrorModal';
+import WindowChat from '../../components/WindowChat';
+import { userData } from '../profile';
 
 type ChatsPropsType = {
   page: {
@@ -42,6 +44,11 @@ export const modalErrorChats = new ErrorModal({
 const listUsersOnline = new UserList({
   infoElement: {
     userlist: [],
+  },
+});
+export const windowChat = new WindowChat({
+  infoElement: {
+    chatsMessage: [],
   },
 });
 
@@ -106,28 +113,13 @@ function addNewChat() {
   }
 }
 
-class Message {
-  message: String;
-
-  date: [string, number];
-
-  constructor(message: string, date: [string, number]) {
-    this.message = message;
-    this.date = date;
-  }
-}
-
 function sendMailChat(e: any): void {
   e.preventDefault();
   if (inputMessage.getValue().trim() !== '') {
-    const date = new Date();
-    const day = date.getDay();
-    const minutes = date.getMinutes() < 9 ? `0${date.getMinutes()}` : date.getMinutes();
-    const time = `${date.getHours()}:${minutes}`;
-    const userMessage = new Message(inputMessage.getValue(), [time, day]);
+    const message = inputMessage.getValue();
     inputMessage.changeValue();
     inputMessage.getElement().focus();
-    console.log(userMessage);
+    chatsList.state.ws?.sendMail(message);
   } else {
     inputMessage.getElement().focus();
   }
@@ -276,6 +268,8 @@ export class Chats extends Block {
     render('.modal-add-user-chat', listUsersOnline);
     render('.modal-delete-user-chat', listDeleteUser);
     render('main', modalErrorChats);
+    render('.window-chat__message__body-chat', windowChat);
     chatsList.getChatsList();
+    userData.getUserData();
   }
 }

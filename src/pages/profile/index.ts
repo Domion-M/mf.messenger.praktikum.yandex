@@ -72,7 +72,7 @@ const returnBtn = new Button({
   onClick: () => router.back(),
 });
 
-const userData = new UserData({
+export const userData = new UserData({
   infoElement: {
     user:
         {

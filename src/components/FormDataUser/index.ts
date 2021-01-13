@@ -5,8 +5,11 @@ import Block from '../../utils/Block';
 import { tpl } from './template.tpl';
 
 class UserData extends Block {
+  data: {id?:number};
+
   constructor(localProps: UserDataType) {
     super('div', localProps);
+    this.data = {};
   }
 
   render() {
@@ -18,6 +21,7 @@ class UserData extends Block {
   getUserData() {
     UsersService.getAuthUser().then((res: XMLHttpRequest) => {
       const data = JSON.parse(res.response);
+      this.data = data;
       this.setProps({
         infoElement: {
           user: { ...data },

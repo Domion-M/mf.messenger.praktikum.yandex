@@ -1,16 +1,24 @@
 import Handlebars from 'handlebars';
 import { router } from '../..';
+import { userData } from '../../pages/profile';
 import { ChatsService } from '../../services';
+import { Ws } from '../../services/WebSoket';
 import Block from '../../utils/Block';
 import { tpl } from './template.tpl';
 
 class ChatsList extends Block {
-  state: { idChat: number };
+  state: {
+    idChat: number,
+    tokenChat:string,
+    ws:Ws|null
+  };
 
   constructor(localProps: any) {
     super('div', localProps);
     this.state = {
       idChat: 0,
+      tokenChat: '',
+      ws: null,
     };
   }
 
@@ -18,6 +26,7 @@ class ChatsList extends Block {
     const { infoElement } = this.props;
     (window as any).choise = (id: number) => {
       this.state.idChat = id;
+      this.getToken(id);
       this.activeChat(id);
     };
     const template = Handlebars.compile(tpl);
@@ -37,8 +46,19 @@ class ChatsList extends Block {
 
   createChat(data: { title: string }) {
     ChatsService.createChats(data).then((res: XMLHttpRequest) => {
-      if (res.status === 200) {
+      if (res.status >= 200 && res.status <= 299) {
         this.getChatsList();
+      }
+    });
+  }
+
+  getToken(id:number) {
+    ChatsService.getChatChoise(id).then((res: XMLHttpRequest) => {
+      if (res.status >= 200 && res.status <= 299) {
+        const data = JSON.parse(res.response);
+        this.state.tokenChat = data.token;
+        this.state.ws = new Ws(userData.data.id!, this.state.idChat, data.token);
+        this.state.ws.connect();
       }
     });
   }
