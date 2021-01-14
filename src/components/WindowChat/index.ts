@@ -26,7 +26,7 @@ class WindowChat extends Block {
   render() {
     const { infoElement }:any = this.props;
     const a = infoElement.chatsMessage.map((el:any) => {
-      if (el.userId) {
+      if (el.userId === userData.data.id) {
         // eslint-disable-next-line no-param-reassign
         el.user_id = true;
       } else if (el.user_id !== userData.data.id) {
