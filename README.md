@@ -32,7 +32,7 @@ npm run lint
 npm run test
 ```
 
-<summary>Ссылки</summary>
+#### Ссылки
 
 Версия на Heroku https://chat-app-penza.herokuapp.com/
 Макет чата: https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1
