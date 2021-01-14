@@ -1,5 +1,5 @@
-FROM node:12-slim
+FROM node:14
 WORKDIR /app
 COPY . .
-RUN npm ci && npm run build
+RUN npm ci --production && npm run build
 CMD node server
