@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
+import { PageInfoType } from '@types';
 import { tpl } from '../../templates/templatePageError';
-import { PageInfoType } from '../../types';
 
 const pageInfo: PageInfoType = {
   page: {

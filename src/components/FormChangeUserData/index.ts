@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
-import { UserType, UserDataType } from '../../types';
+import Block from '@block';
+import { UserType, UserDataType } from '@types';
 import { UsersService } from '../../services';
-import Block from '../../utils/Block';
 import { tpl } from './template.tpl';
 import { modalErrorProfile } from '../../pages/changeProfile';
 

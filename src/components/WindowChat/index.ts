@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
+import Block from '@block';
 import { userData } from '../../pages/profile';
-import Block from '../../utils/Block';
 import { tpl } from './template.tpl';
 
 type WindowChatType = {

@@ -17,7 +17,17 @@
     "noImplicitAny": true,
     "alwaysStrict": false,
     "strictNullChecks": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": "src",
+    "paths": {
+      "@pages": [ "pages" ],
+      "@types": [ "types" ],
+      "@block": [ "utils/Block" ],
+      "@router": [ "./" ],
+      "@services": [ "services" ],
+      "@render": [ "utils/Render" ],
+      "@button": [ "components/Button" ]
+    }
   },
   "include": [
     "src/**/*"

@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
-import { FragmentPropsType } from '../../types';
-import Block from '../../utils/Block';
+import Block from '@block';
+import { FragmentPropsType } from '@types';
 import { tpl } from './template';
 
 class Fragment extends Block {

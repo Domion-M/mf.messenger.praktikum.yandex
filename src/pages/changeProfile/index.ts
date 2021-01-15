@@ -1,12 +1,12 @@
 import Handlebars from 'handlebars';
-import { router } from '../..';
-import { render } from '../../utils/Render';
-import Button from '../../components/Button';
+import Block from '@block';
+import { router } from '@router';
+import { render } from '@render';
+import Button from '@button';
+import { PageInfoType } from '@types';
 import Modal from '../../components/Modal';
 import Fragment from '../../components/Fragment';
-import { PageInfoType } from '../../types';
 import { tpl } from './tempalte';
-import Block from '../../utils/Block';
 import ChangeDateUser from '../../components/FormChangeUserData';
 import ErrorModal from '../../components/ErrorModal';
 

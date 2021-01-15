@@ -1,10 +1,10 @@
 import Handlebars from 'handlebars';
-import { router } from '../..';
-import { render } from '../../utils/Render';
-import Button from '../../components/Button';
-import { PageInfoType } from '../../types';
+import Block from '@block';
+import { router } from '@router';
+import { PageInfoType } from '@types';
+import { render } from '@render';
+import Button from '@button';
 import { tpl } from './template';
-import Block from '../../utils/Block';
 import ChangePasswordUser from '../../components/FormChangePassword';
 import ErrorModal from '../../components/ErrorModal';
 

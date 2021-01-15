@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
-import { InputPropsType } from '../../types';
-import Block from '../../utils/Block';
+import Block from '@block';
+import { InputPropsType } from '@types';
 import { tpl } from './template';
 
 class Input extends Block {

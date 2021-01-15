@@ -1,13 +1,13 @@
 import Handlebars from 'handlebars';
-import { router } from '../..';
-import { render } from '../../utils/Render';
-import Button from '../../components/Button';
+import Block from '@block';
+import Button from '@button';
+import { router } from '@router';
+import { render } from '@render';
+import { PageInfoType } from '@types';
+import { AuthService } from '@services';
 import InputWrapper from '../../components/InputWrapper';
-import { PageInfoType } from '../../types/index';
 import { tpl } from './template';
 import Input from '../../components/Input';
-import Block from '../../utils/Block';
-import { AuthService } from '../../services';
 import ErrorModal from '../../components/ErrorModal';
 
 const pageInfo: PageInfoType = {

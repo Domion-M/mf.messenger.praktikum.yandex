@@ -1,11 +1,11 @@
 import Handlebars from 'handlebars';
-import { router } from '../..';
-import { render } from '../../utils/Render';
-import Button from '../../components/Button';
-import { PageInfoType } from '../../types';
+import Block from '@block';
+import { router } from '@router';
+import { render } from '@render';
+import Button from '@button';
+import { PageInfoType } from '@types';
+import { AuthService } from '@services';
 import { tpl } from './template';
-import Block from '../../utils/Block';
-import { AuthService } from '../../services';
 import UserData from '../../components/FormDataUser';
 
 function exitChat() {

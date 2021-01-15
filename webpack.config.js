@@ -30,7 +30,7 @@ const allRules = () => {
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  mode: 'developmet',
+  mode: 'development',
   entry: './index.ts',
   module: {
     rules: allRules(),
@@ -39,7 +39,14 @@ module.exports = {
     extensions: ['.ts', '.js'],
     alias: {
       handlebars: 'handlebars/dist/handlebars.min.js',
-      '@page': path.resolve(__dirname, './src/pages/'),
+      '@router': path.resolve(__dirname, './src'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@types': path.resolve(__dirname, './src/types'),
+      '@block': path.resolve(__dirname, './src/utils/Block'),
+      '@services': path.resolve(__dirname, './src/services'),
+      '@render': path.resolve(__dirname, './src/utils/Render'),
+      '@button': path.resolve(__dirname, './src/components/Button'),
+
     },
   },
   output: {
@@ -50,6 +57,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'src'),
     inline: true,
+    historyApiFallback: true,
     port: 3000,
     hot: isDev,
   },

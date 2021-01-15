@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
-import { ButtonPropsType } from '../../types';
-import Block from '../../utils/Block';
+import { ButtonPropsType } from '@types';
+import Block from '@block';
 import { tpl } from './template';
 
 class Button extends Block {

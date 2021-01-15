@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
+import Block from '@block';
+import { PageInfoType } from '@types';
 import { tpl } from '../../templates/templatePageError';
-import { PageInfoType } from '../../types';
-import Block from '../../utils/Block';
 
 const pageInfo: PageInfoType = {
   page:

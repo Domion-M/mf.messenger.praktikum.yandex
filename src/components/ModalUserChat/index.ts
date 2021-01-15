@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars';
-import Block from '../../utils/Block';
+import Block from '@block';
 import { tpl } from './template.tpl';
 
 class ModalAddUserChat extends Block {

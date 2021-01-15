@@ -1,4 +1,4 @@
-import { ChangeUserPasswordType, UserType } from '../../types';
+import { ChangeUserPasswordType, UserType } from '@types';
 import ApiServices from '../Api';
 
 export default class UsersService {
