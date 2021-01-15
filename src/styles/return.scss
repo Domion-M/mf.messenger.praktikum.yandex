@@ -11,14 +11,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #3369f3;
+    background: $blue-color;
     border-radius: 50%;
   }
   .return-page__return-btn{
     &> span {
         width: 10px;
         height: 1px;
-        background: #fff;
+        background: $white-color;
         position: relative;
       }
   }
@@ -28,7 +28,7 @@
       content: "";
       width: 4px;
       height: 1px;
-      background: #fff;
+      background: $white-color;
       position: absolute;
       left: 0;
     }
@@ -43,4 +43,3 @@
         transform: rotate(45deg);
       }
   }
-    

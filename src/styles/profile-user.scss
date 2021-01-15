@@ -21,7 +21,7 @@
 }
   .user-profile__avatar {
    @include flex-center;
-    flex-direction: column;    
+    flex-direction: column;
   }
 
   .user-profile__avatar > div {
@@ -49,14 +49,14 @@
     justify-content: space-between;
     margin-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid $grey-light-color;
     font-size: 13px;
   }
 
   .chenge-data-user {
-    color: #999999;
+    color: $grey-color;
     input{
-        color:#999999;
+        color:$grey-color;
     }
   }
 
@@ -82,4 +82,3 @@
         padding-bottom: 3px;
       }
   }
-  

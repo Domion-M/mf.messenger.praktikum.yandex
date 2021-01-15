@@ -55,10 +55,8 @@ function logDateUser(e: Event) {
   });
   if (userDate.length === inputFocusBlur.length) {
     const user = new UserAuth(userDate[0], userDate[1]);
-    AuthService.signIn(user).then((res: XMLHttpRequest) => {
-      if (res.status >= 200 && res.status <= 299) {
-        router.go('/');
-      }
+    AuthService.signIn(user).then(() => {
+      router.go('/');
     }).catch(() => modalError.openAndClose());
   }
 }

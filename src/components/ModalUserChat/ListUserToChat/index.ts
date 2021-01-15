@@ -16,12 +16,10 @@ class DeleteUserToChat extends Block {
         users: [id],
         chatId: chatsList.state.idChat,
       };
-      ChatsService.deleteChatUser(data).then((res: XMLHttpRequest) => {
-        if (res.status === 200) {
-          ChatsService.getChatOnUsers(chatsList.state.idChat).then((resp: XMLHttpRequest) => {
-            listDeleteUser.reRender(JSON.parse(resp.response));
-          }).catch(() => modalErrorChats.openAndClose());
-        }
+      ChatsService.deleteChatUser(data).then(() => {
+        ChatsService.getChatOnUsers(chatsList.state.idChat).then((resp: XMLHttpRequest) => {
+          listDeleteUser.reRender(JSON.parse(resp.response));
+        }).catch(() => modalErrorChats.openAndClose());
       });
     };
     const template = Handlebars.compile(tpl);

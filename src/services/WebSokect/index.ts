@@ -28,7 +28,7 @@ export class Ws {
       if (event.wasClean) {
         console.log('Соединение закрыто чисто');
       } else {
-        console.log('Обрыв соединения');
+        this.connect();
       }
     });
   }

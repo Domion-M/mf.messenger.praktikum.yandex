@@ -77,8 +77,8 @@ class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  componentDidMount(oldProps: object) {
-    console.log(oldProps);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  componentDidMount(_oldProps: object) {
   }
 
   _componentDidUpdate(oldProps: object, newProps: object) {
@@ -89,8 +89,8 @@ class Block {
     }
   }
 
-  componentDidUpdate(oldProps: object, newProps: object) {
-    console.log(oldProps, 'oldProps', newProps, 'newProps');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  componentDidUpdate(_oldProps: object, _newProps: object) {
     return true;
   }
 

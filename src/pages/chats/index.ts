@@ -68,9 +68,7 @@ const modalDeleteUser = new ModalAddUserChat({
 
 function getUserOnline(e: { target: { value: string; }; }) {
   UsersService.getAllUsersOnline({ login: e.target.value }).then((res: XMLHttpRequest) => {
-    if (res.status === 200) {
-      listUsersOnline.reRender(JSON.parse(res.response));
-    }
+    listUsersOnline.reRender(JSON.parse(res.response));
   }).catch(() => modalErrorChats.openAndClose());
 }
 

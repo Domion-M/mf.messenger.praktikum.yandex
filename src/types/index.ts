@@ -28,23 +28,15 @@ export type ButtonPropsType = {
       text?: string;
     },
   },
-  onClick?: (e: any) => void;
+  onClick?: (e: Event) => void;
 };
 
 export type UserDataType = {
   className?: string;
   infoElement: {
-    user: {
-      first_name?: string
-      second_name?: string
-      display_name?: string
-      login?: string
-      phone?: string
-      email?: string
-
-    },
+    user: Partial<UserType>
   },
-  onClick?: (e: any) => void;
+  onClick?: (e: Event) => void;
 };
 
 export type UserPasswordType = {
@@ -57,7 +49,7 @@ export type UserPasswordType = {
 
     },
   },
-  onClick?: (e: any) => void;
+  onClick?: (e: Event) => void;
 };
 
 export interface EventType {

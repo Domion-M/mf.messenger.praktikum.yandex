@@ -69,7 +69,6 @@ export class Router {
 
   getRoute(pathname: string) {
     const page = this.routes.find((route) => route.match(pathname));
-    const error = this.routes.find((route) => route.match('/404'));
-    return page ?? error;
+    return page ?? this.routes.find((route) => route.match('/404'));
   }
 }

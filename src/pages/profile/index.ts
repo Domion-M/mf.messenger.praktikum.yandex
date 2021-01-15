@@ -9,10 +9,8 @@ import { tpl } from './template';
 import UserData from '../../components/FormDataUser';
 
 function exitChat() {
-  AuthService.signOut().then((res: XMLHttpRequest) => {
-    if (res.status === 200) {
-      router.go('/auth');
-    }
+  AuthService.signOut().then(() => {
+    router.go('/auth');
   });
 }
 

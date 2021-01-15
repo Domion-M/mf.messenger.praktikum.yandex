@@ -61,10 +61,8 @@ function logDateUser(e: Event) {
       const user = new UserSignin(
         userDate[0], userDate[1], userDate[2], userDate[3], userDate[4], userDate[5],
       );
-      AuthService.singUp(user).then((res: XMLHttpRequest) => {
-        if (res.status > 200 && res.status <= 299) {
-          router.go('/');
-        }
+      AuthService.singUp(user).then(() => {
+        router.go('/');
       }).catch(() => modalError.openAndClose());
     } else {
       (<HTMLInputElement>inputFocusBlur[6]).focus();

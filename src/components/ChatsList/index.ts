@@ -3,7 +3,7 @@ import Block from '@block';
 import { router } from '@router';
 import { userData } from '../../pages/profile';
 import { ChatsService } from '../../services';
-import { Ws } from '../../services/WebSoket';
+import { Ws } from '../../services/WebSokect';
 import { tpl } from './template.tpl';
 
 class ChatsList extends Block {
@@ -45,21 +45,17 @@ class ChatsList extends Block {
   }
 
   createChat(data: { title: string }) {
-    ChatsService.createChats(data).then((res: XMLHttpRequest) => {
-      if (res.status >= 200 && res.status <= 299) {
-        this.getChatsList();
-      }
+    ChatsService.createChats(data).then(() => {
+      this.getChatsList();
     });
   }
 
   getToken(id:number) {
     ChatsService.getChatChoise(id).then((res: XMLHttpRequest) => {
-      if (res.status >= 200 && res.status <= 299) {
-        const data = JSON.parse(res.response);
-        this.state.tokenChat = data.token;
-        this.state.ws = new Ws(userData.data.id!, this.state.idChat, data.token);
-        this.state.ws.connect();
-      }
+      const data = JSON.parse(res.response);
+      this.state.tokenChat = data.token;
+      this.state.ws = new Ws(userData.data.id!, this.state.idChat, data.token);
+      this.state.ws.connect();
     });
   }
 
@@ -81,10 +77,8 @@ class ChatsList extends Block {
 
   deleteChat() {
     if (this.state.idChat) {
-      ChatsService.deleteChat({ chatId: this.state.idChat }).then((res: XMLHttpRequest) => {
-        if (res.status === 200) {
-          this.getChatsList();
-        }
+      ChatsService.deleteChat({ chatId: this.state.idChat }).then(() => {
+        this.getChatsList();
       });
     }
   }
