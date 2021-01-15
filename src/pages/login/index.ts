@@ -56,6 +56,7 @@ function logDateUser(e: Event) {
   if (userDate.length === inputFocusBlur.length) {
     const user = new UserAuth(userDate[0], userDate[1]);
     AuthService.signIn(user).then(() => {
+      localStorage.isLoginChat = true;
       router.go('/');
     }).catch(() => modalError.openAndClose());
   }
@@ -152,6 +153,9 @@ const inputWrap = new InputWrapper({
 
 export class Login extends Block {
   render() {
+    if (JSON.parse(localStorage.isLoginChat)) {
+      router.go('/');
+    }
     return template(pageInfo);
   }
 

@@ -41,7 +41,10 @@ class ChatsList extends Block {
           userchats: data,
         },
       });
-    }).catch(() => router.go('/auth'));
+    }).catch(() => {
+      localStorage.isLoginChat = false;
+      router.go('/auth');
+    });
   }
 
   createChat(data: { title: string }) {
@@ -64,13 +67,13 @@ class ChatsList extends Block {
   }
 
   activeChat(id: number) {
-    const child = this.getAllChildrenChatList();
+    const child: HTMLElement[] = this.getAllChildrenChatList();
     const childAsArr = Array.from(child);
     childAsArr.forEach((el) => {
-      if (Number((el as HTMLElement).id) === id) {
-        (el as HTMLElement).classList.add('active');
+      if (Number((el).id) === id) {
+        (el).classList.add('active');
       } else {
-        (el as HTMLElement).classList.remove('active');
+        (el).classList.remove('active');
       }
     });
   }

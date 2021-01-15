@@ -10,6 +10,7 @@ import UserData from '../../components/FormDataUser';
 
 function exitChat() {
   AuthService.signOut().then(() => {
+    localStorage.isLoginChat = false;
     router.go('/auth');
   });
 }

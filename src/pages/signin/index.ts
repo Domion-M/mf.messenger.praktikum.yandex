@@ -62,6 +62,7 @@ function logDateUser(e: Event) {
         userDate[0], userDate[1], userDate[2], userDate[3], userDate[4], userDate[5],
       );
       AuthService.singUp(user).then(() => {
+        localStorage.isLoginChat = true;
         router.go('/');
       }).catch(() => modalError.openAndClose());
     } else {
