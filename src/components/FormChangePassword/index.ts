@@ -28,8 +28,9 @@ class ChangePasswordUser extends Block {
   }
 
   changeUserPassword(data: ChangeUserPasswordType) {
-    UsersService.changeUserPassword(data).then((res: XMLHttpRequest) => {
-      if (res) alert('Пароль успешно измененен');
+    UsersService.changeUserPassword(data).then(() => {
+      // eslint-disable-next-line no-alert
+      alert('Пароль успешно измененен');
     }).catch(() => modalErrorPassword.openAndClose());
   }
 }

@@ -96,6 +96,7 @@ function openModalMenu(this: HTMLElement): void {
     const modalMenu: HTMLElement | null = document.querySelector('.window-chat__message__wrap__modal-menu');
     if (modalMenu) modalMenu.classList.toggle('display');
   } else {
+    // eslint-disable-next-line no-alert
     alert('Выбирите чат!');
   }
 }
@@ -107,6 +108,7 @@ function addNewChat() {
     chatsList.createChat(chat);
     inputAddChat.changeValue();
   } else {
+    // eslint-disable-next-line no-alert
     alert('Название чата больше 4 символов');
   }
 }
