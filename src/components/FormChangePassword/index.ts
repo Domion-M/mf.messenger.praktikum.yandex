@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
 import { ChangeUserPasswordType, UserPasswordType } from '@types';
-import { modalErrorPassword } from '../../pages/changePassword';
-import { UsersService } from '../../services';
+import { modalErrorPassword } from '@pages';
+import { UsersService } from '@services';
 import { tpl } from './template.tpl';
 
 class ChangePasswordUser extends Block {

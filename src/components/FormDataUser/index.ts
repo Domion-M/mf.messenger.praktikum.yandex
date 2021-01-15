@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
 import { UserDataType } from '@types';
-import { UsersService } from '../../services';
+import { UsersService } from '@services';
 import { tpl } from './template.tpl';
 
 class UserData extends Block {

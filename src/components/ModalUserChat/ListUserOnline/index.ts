@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
 import { ChatsService } from '@services';
-import { chatsList } from '../../../pages/chats';
+import { chatsList } from '@pages';
 import { tpl } from './template.tpl';
 
 class UserList extends Block {

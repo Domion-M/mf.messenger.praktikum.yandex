@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
 import { router } from '@router';
-import { userData } from '../../pages/profile';
-import { ChatsService } from '../../services';
+import { userData } from '@pages';
+import { ChatsService } from '@services';
 import { Ws } from '../../services/WebSokect';
 import { tpl } from './template.tpl';
 

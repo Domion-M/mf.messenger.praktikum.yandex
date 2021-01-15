@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
-import { userData } from '../../pages/profile';
+import { userData } from '@pages';
 import { tpl } from './template.tpl';
 
 type WindowChatType = {
@@ -12,7 +12,7 @@ type WindowChatType = {
       content?: string;
     }[],
   },
-  onClick?: (e: any) => void;
+  onClick?: (e: Event) => void;
 };
 
 class WindowChat extends Block {

@@ -1,9 +1,9 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
 import { UserType, UserDataType } from '@types';
-import { UsersService } from '../../services';
+import { UsersService } from '@services';
+import { modalErrorProfile } from '@pages';
 import { tpl } from './template.tpl';
-import { modalErrorProfile } from '../../pages/changeProfile';
 
 class ChangeDateUser extends Block {
   constructor(localProps: UserDataType) {

@@ -1,11 +1,13 @@
-import { Error } from './pages/404';
+import {
+  Error,
+  Chats,
+  Profile,
+  ChangePassword,
+  ChangeProfile,
+  Login,
+  Signin,
+} from '@pages';
 import { Router } from './utils/Router';
-import { Login } from './pages/login';
-import { Signin } from './pages/signin';
-import { Profile } from './pages/profile';
-import { Chats } from './pages/chats';
-import { ChangeProfile } from './pages/changeProfile';
-import { ChangePassword } from './pages/changePassword';
 
 import './styles/style.scss';
 

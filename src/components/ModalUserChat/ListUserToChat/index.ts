@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
 import { ChatsService } from '@services';
-import { chatsList, listDeleteUser, modalErrorChats } from '../../../pages/chats';
+import { chatsList, listDeleteUser, modalErrorChats } from '@pages';
 import { tpl } from './template.tpl';
 
 class DeleteUserToChat extends Block {
