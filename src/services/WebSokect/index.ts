@@ -26,6 +26,7 @@ export class Ws {
   closeConnect() {
     this.socket.addEventListener('close', (event) => {
       if (event.wasClean) {
+        // eslint-disable-next-line no-console
         console.log('Соединение закрыто чисто');
       } else {
         this.connect();
