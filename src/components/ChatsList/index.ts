@@ -1,9 +1,9 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
-import { router } from '@router';
 import { userData } from '@pages';
 import { ChatsService } from '@services';
-import { Ws } from '../../services/WebSokect';
+import { router } from '@';
+import { Ws } from '../../services/WebSocket';
 import { tpl } from './template.tpl';
 
 class ChatsList extends Block {

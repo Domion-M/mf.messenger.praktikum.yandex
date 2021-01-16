@@ -20,13 +20,14 @@
     "outDir": "dist",
     "baseUrl": "src",
     "paths": {
+      "@": [ "./" ],
       "@pages": [ "pages" ],
       "@types": [ "types" ],
       "@block": [ "utils/Block" ],
-      "@router": [ "./" ],
       "@services": [ "services" ],
       "@render": [ "utils/Render" ],
-      "@button": [ "components/Button" ]
+      "@components": [ "components" ],
+      "@button": [ "components/Button" ],
     }
   },
   "include": [

@@ -1,9 +1,9 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
-import { router } from '@router';
 import { render } from '@render';
 import Button from '@button';
 import { PageInfoType } from '@types';
+import { router } from '@';
 import Modal from '../../components/Modal';
 import Fragment from '../../components/Fragment';
 import { tpl } from './tempalte';

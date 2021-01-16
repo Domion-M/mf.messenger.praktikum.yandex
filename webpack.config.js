@@ -39,12 +39,13 @@ module.exports = {
     extensions: ['.ts', '.js'],
     alias: {
       handlebars: 'handlebars/dist/handlebars.min.js',
-      '@router': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './src'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@types': path.resolve(__dirname, './src/types'),
       '@block': path.resolve(__dirname, './src/utils/Block'),
       '@services': path.resolve(__dirname, './src/services'),
       '@render': path.resolve(__dirname, './src/utils/Render'),
+      '@components': path.resolve(__dirname, './src/components'),
       '@button': path.resolve(__dirname, './src/components/Button'),
 
     },

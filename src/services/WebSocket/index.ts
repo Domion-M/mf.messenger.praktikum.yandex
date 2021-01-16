@@ -1,4 +1,4 @@
-import { windowChat } from '../../pages/chats';
+import { windowChat } from '@pages';
 
 export class Ws {
   socket:WebSocket;

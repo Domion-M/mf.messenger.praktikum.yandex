@@ -7,6 +7,7 @@ export {
   chatsList,
   listDeleteUser,
   modalErrorChats,
+  windowChat,
 } from './chats';
 export { ChangeProfile, modalErrorProfile } from './changeProfile';
 export { ChangePassword, modalErrorPassword } from './changePassword';

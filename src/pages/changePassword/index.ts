@@ -1,9 +1,9 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
-import { router } from '@router';
 import { PageInfoType } from '@types';
 import { render } from '@render';
 import Button from '@button';
+import { router } from '@';
 import { tpl } from './template';
 import ChangePasswordUser from '../../components/FormChangePassword';
 import ErrorModal from '../../components/ErrorModal';
