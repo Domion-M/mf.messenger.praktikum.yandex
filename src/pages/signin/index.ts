@@ -1,10 +1,10 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
 import Button from '@button';
-import { router } from '@router';
 import { render } from '@render';
 import { PageInfoType } from '@types';
 import { AuthService } from '@services';
+import { router } from '@';
 import InputWrapper from '../../components/InputWrapper';
 import { tpl } from './template';
 import Input from '../../components/Input';

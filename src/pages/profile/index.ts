@@ -1,10 +1,10 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
-import { router } from '@router';
 import { render } from '@render';
 import Button from '@button';
 import { PageInfoType } from '@types';
 import { AuthService } from '@services';
+import { router } from '@';
 import { tpl } from './template';
 import UserData from '../../components/FormDataUser';
 

@@ -1,9 +1,9 @@
 import Handlebars from 'handlebars';
 import Block from '@block';
-import { router } from '@router';
 import { render } from '@render';
 import Button from '@button';
 import { ChatsService, UsersService } from '@services';
+import { router } from '@';
 import Fragment from '../../components/Fragment';
 import Input from '../../components/Input';
 import { tpl } from './template';

@@ -35,6 +35,7 @@ class ChatsList extends Block {
 
   getChatsList() {
     ChatsService.getChatsUser().then((res: XMLHttpRequest) => {
+      localStorage.isLoginChat = true;
       const data = JSON.parse(res.response);
       this.setProps({
         infoElement: {
